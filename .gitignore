@@ -1,0 +1,36 @@
+# Secrets
+.env
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
+
+# Données locales
+data/
+*.parquet
+*.duckdb
+*.db
+
+# Node (interface)
+node_modules/
+.next/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Éditeurs et OS
+.vscode/
+.idea/
+.DS_Store

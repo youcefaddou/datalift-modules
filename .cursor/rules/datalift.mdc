@@ -1,0 +1,16 @@
+---
+description: Règles du projet DataLift (dépôt modules)
+globs:
+alwaysApply: true
+---
+
+Lis AGENTS.md (contexte de référence) et docs/SESSION.md (état courant) avant toute tâche.
+
+Règles essentielles :
+- Aucune donnée réelle, aucun secret dans le code ni dans la conversation.
+- contracts/ fait foi, modification uniquement par ADR.
+- L'IA propose, l'humain valide. Idempotence et lignage.
+- Code et commits en anglais, documentation en français. Tests obligatoires.
+- Ne jamais charger une spec d'API entière : chercher la section utile.
+- Plan avant le code, question si c'est ambigu.
+- Quand je dis "handoff" : réécrire docs/SESSION.md (40 lignes max) et proposer un message de commit.
