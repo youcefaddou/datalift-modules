@@ -30,7 +30,7 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 | Agent IA | Demande en langage naturel, flux et correspondances proposés | équipe data, dans ce dépôt (dossier à définir) |
 | Validation | Interface humaine | `ui/` |
 | Orchestrateur | Exécution des flux validés, dans l'ordre des dépendances (collaborateurs avant temps) | `pipelines/` (outil à valider) |
-| Supervision | Journaux, métriques, alertes | base dans `pipelines/`, avancé à part |
+| Supervision | Journaux, métriques, alertes | équipe data, dans `pipelines/` |
 
 ## Contrats (`contracts/`)
 
