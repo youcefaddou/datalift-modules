@@ -4,6 +4,7 @@
 
 | Terme | Définition |
 | --- | --- |
+| Action | Écriture vers un logiciel, déclarée sur un objet du modèle commun avec ses préconditions (règles métier) |
 | ADR | Architecture Decision Record : fiche qui trace une décision technique et sa raison |
 | API | Interface qui permet à un logiciel d'échanger des données avec un autre |
 | API simulée (mock) | API qui reproduit le comportement d'une vraie à partir de sa spécification |
@@ -15,10 +16,13 @@
 | Données synthétiques | Données générées, sans lien avec des personnes ou entreprises réelles, avec des défauts injectés et documentés |
 | Flux | Échange de données défini entre une source et une cible |
 | Idempotence | Rejouer une opération donne le même résultat, sans doublon |
+| Identifiant DataLift (`datalift_id`) | Identifiant stable d'un objet, commun à tous les logiciels où il existe |
 | Lakehouse | Plateforme qui stocke et analyse de grands volumes de données |
+| Lien | Relation déclarée entre deux objets du modèle commun (une facture et sa commande) |
 | Lignage | Origine d'une donnée : `source_system`, `source_id`, `extracted_at` |
-| Modèle commun (ontologie) | Représentation unique des objets métier, indépendante des logiciels |
+| Modèle commun (ontologie) | Représentation unique des objets métier, de leurs liens et des actions possibles, indépendante des logiciels |
 | Outil maître | Logiciel qui fait référence pour un type de données (Lucca pour les collaborateurs) |
+| Question transverse | Question dont la réponse croise les données de plusieurs logiciels |
 | Rapprochement | Vérification qu'une facture correspond à sa commande d'achat |
 | Réconciliation | Vérification que la cible contient exactement ce qui a été envoyé |
 | Score de confiance | Probabilité estimée par l'IA qu'une correspondance proposée soit correcte |

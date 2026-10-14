@@ -10,13 +10,14 @@ Ces logiciels échangent mal leurs données. En pratique, on ressaisit à la mai
 
 ## Ce que fait DataLift
 
-DataLift est une plateforme web d'intégration de données assistée par IA, inspirée de Palantir Foundry. Elle fait cinq choses :
+DataLift est une plateforme web d'intégration de données assistée par IA, inspirée de Palantir Foundry. Elle fait six choses :
 
 1. **Connecter** les logiciels via leurs API, avec un connecteur par logiciel.
-2. **Unifier** les données dans un modèle commun : une définition unique de Facture, Fournisseur, Collaborateur, Feuille de temps, indépendante du logiciel source. C'est l'équivalent de l'ontologie chez Palantir.
+2. **Unifier** les données dans un modèle commun : une définition unique de Facture, Fournisseur, Collaborateur, Feuille de temps, indépendante du logiciel source. C'est l'équivalent de l'ontologie chez Palantir. Le modèle décrit aussi les liens entre objets (une facture est liée à sa commande et à son fournisseur) et les actions possibles (envoyer une facture vers IFS, avec ses règles).
 3. **Recevoir une demande en langage naturel**, par exemple : « envoie les factures validées de Yooz vers IFS ».
 4. **Proposer puis faire valider** : l'IA propose le flux, les correspondances de champs et les transformations, avec un score de confiance. Un humain relit et valide. Aucun flux ne s'exécute sans validation enregistrée.
 5. **Exécuter et superviser** : transfert des données, contrôles, réconciliation, alertes.
+6. **Interroger** les données de plusieurs logiciels à la fois, par exemple : « quels collaborateurs ont des temps dans Progessi mais n'existent pas encore dans IFS ? ». Aucun logiciel ne sait répondre seul à ce type de question.
 
 Une migration d'un logiciel vers un autre n'est qu'un cas particulier : un flux exécuté une seule fois.
 

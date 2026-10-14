@@ -21,7 +21,7 @@ Projet étudiant Ydays (Ynov), M1 puis M2. Chef de projet et architecte : Youcef
 | `ui/` | Interface de validation |
 | `tests/` | unit, contract, e2e |
 | `infra/` | Docker, Terraform, CI |
-| `jira/` | Backlog (CSV d'import) et scripts de génération |
+| `jira/` | Import initial du backlog (CSV) et scripts. Après l'import, Jira fait foi |
 
 ## Stack et outils
 
