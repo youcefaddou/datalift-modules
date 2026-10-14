@@ -1,72 +1,60 @@
-# DataLift, expliqué simplement
+# DataLift en bref
 
-> Ce document sert à ce qu'on parte tous de la même image du projet. Pas besoin d'être expert en données pour le lire.
+> Une vue d'ensemble du projet, pour qu'on parte tous de la même compréhension.
 
-## Le problème de départ
+## Le problème
 
-Prends une entreprise de 50 à 200 personnes. Elle utilise une dizaine de logiciels :
-- un pour les factures fournisseurs (Yooz) ;
-- un pour les RH (Lucca) ;
-- un pour les feuilles de temps (Progessi) ;
-- un gros logiciel central qui gère un peu tout (IFS, ce qu'on appelle un ERP) ;
-- et quelques autres.
+Une entreprise de 50 à 200 personnes utilise une dizaine de logiciels métier : factures fournisseurs (Yooz), RH (Lucca), feuilles de temps (Progessi), ERP (IFS), comptabilité, recrutement, notes de frais.
 
-Ces logiciels ne se parlent pas bien entre eux. Résultat : des gens recopient les mêmes infos d'un outil à l'autre, font des exports Excel ou bricolent des scripts qui cassent au moindre changement. C'est lent, ça crée des erreurs, et personne n'aime faire ça.
+Ces logiciels échangent mal leurs données. En pratique, on ressaisit à la main, on passe par des exports Excel ou par des scripts fragiles. C'est lent et source d'erreurs.
 
 ## Ce que fait DataLift
 
-DataLift sert de **traducteur et de gare de triage** entre ces logiciels. Concrètement, c'est une application web qui fait cinq choses :
+DataLift est une plateforme web d'intégration de données assistée par IA, inspirée de Palantir Foundry. Elle fait cinq choses :
 
-1. **Se brancher** sur chaque logiciel. Chaque logiciel propose une « porte d'entrée » officielle pour lire ou écrire ses données : son API. Pour chaque logiciel, on écrit un petit module qui sait passer par cette porte : un **connecteur**.
-2. **Ranger les données dans une langue commune.** Yooz appelle une facture d'une certaine façon, IFS d'une autre. On définit une seule façon de décrire une Facture, un Fournisseur, un Collaborateur, une Feuille de temps, peu importe le logiciel d'origine. C'est notre **modèle commun** (Palantir appelle ça une « ontologie »).
-3. **Comprendre une demande en français.** L'utilisateur écrit par exemple : « envoie les factures validées de Yooz vers IFS ».
-4. **Proposer, puis faire valider.** L'IA propose comment faire : quel champ de Yooz correspond à quel champ d'IFS, quelles transformations appliquer, avec un niveau de confiance. **Un humain relit et valide.** Rien ne part sans cette validation.
-5. **Exécuter et surveiller.** DataLift fait le transfert, vérifie que tout est bien arrivé et prévient s'il y a un souci.
+1. **Connecter** les logiciels via leurs API, avec un connecteur par logiciel.
+2. **Unifier** les données dans un modèle commun : une définition unique de Facture, Fournisseur, Collaborateur, Feuille de temps, indépendante du logiciel source. C'est l'équivalent de l'ontologie chez Palantir.
+3. **Recevoir une demande en langage naturel**, par exemple : « envoie les factures validées de Yooz vers IFS ».
+4. **Proposer puis faire valider** : l'IA propose le flux, les correspondances de champs et les transformations, avec un score de confiance. Un humain relit et valide. Aucun flux ne s'exécute sans validation enregistrée.
+5. **Exécuter et superviser** : transfert des données, contrôles, réconciliation, alertes.
 
-## Une image pour s'en souvenir
+Une migration d'un logiciel vers un autre n'est qu'un cas particulier : un flux exécuté une seule fois.
 
-Imagine un bureau de traduction :
-- les **connecteurs** sont les coursiers qui vont chercher et déposer les documents chez chaque client ;
-- le **modèle commun** est la langue de travail interne du bureau ;
-- l'**IA** est un traducteur qui prépare un premier jet ;
-- l'**humain** est le relecteur qui signe avant l'envoi ;
-- la **supervision** est le suivi des envois : tout est arrivé ? rien en double ? rien de perdu ?
+## Le parcours utilisateur
 
-## Le parcours type d'un utilisateur
+1. Créer un espace pour l'entreprise cliente.
+2. Brancher ses logiciels à partir du catalogue de connecteurs.
+3. DataLift extrait les données et produit un premier diagnostic qualité : doublons, références orphelines, incohérences.
+4. Décrire le flux voulu en langage naturel.
+5. L'IA propose le flux et le mapping.
+6. L'utilisateur corrige si besoin et valide.
+7. DataLift exécute, contrôle et journalise.
 
-1. Il crée un espace pour l'entreprise cliente.
-2. Il branche les logiciels de l'entreprise, en piochant dans notre catalogue de connecteurs.
-3. DataLift récupère les données et fait un premier bilan : doublons, infos manquantes, incohérences.
-4. Il décrit ce qu'il veut en langage naturel.
-5. L'IA propose le flux et les correspondances de champs.
-6. Il vérifie, corrige si besoin, et valide.
-7. DataLift exécute, contrôle et garde une trace de tout.
+## Le pipeline
 
-## Ce qu'on construit cette année (M1)
+- **Bronze** : données brutes, telles que renvoyées par l'API source.
+- **Silver** : données nettoyées, contrôlées et converties dans le modèle commun. Chaque ligne porte son lignage : `source_system`, `source_id`, `extracted_at`.
+- **Gold** : vues prêtes à l'emploi, rapprochements, tableau de bord.
 
-On travaille avec 8 logiciels. Pour les 8, l'IA doit savoir proposer des correspondances. Pour 3 d'entre eux, on va jusqu'au bout, c'est-à-dire un vrai transfert vers IFS :
+Deux garanties sur tous les flux :
 
-| Flux | Ce qui circule | Règle importante |
-|---|---|---|
-| 1. Yooz → IFS | Les factures fournisseurs | Une facture qui ne correspond à aucune commande est mise de côté, pas envoyée |
-| 2. Lucca → IFS | Les collaborateurs (arrivées, changements, départs) | C'est Lucca qui fait foi |
-| 3. Progessi → IFS | Les feuilles de temps validées | Le collaborateur doit déjà exister dans IFS, donc le flux 2 passe avant |
+- **Idempotence** : rejouer un flux ne crée jamais de doublon.
+- **Traçabilité** : on sait d'où vient chaque donnée et qui a validé chaque flux.
 
-On n'utilise **jamais de vraies données** : on fabrique des données fictives (dites synthétiques), avec des erreurs glissées exprès pour vérifier que DataLift les repère. Et on travaille avec des **versions simulées** des logiciels, construites à partir de leur documentation officielle.
+## Le périmètre M1
 
-## Les quelques mots qu'on va entendre souvent
+8 logiciels sont au catalogue. Pour les 8, l'IA doit savoir proposer des correspondances. Pour 3 d'entre eux, on va jusqu'à l'exécution réelle vers IFS :
 
-- **API** : la porte d'entrée officielle d'un logiciel pour lire ou écrire ses données.
-- **Connecteur** : notre module qui sait parler à l'API d'un logiciel.
-- **Modèle commun** : notre façon unique de décrire les données, quel que soit le logiciel.
-- **Bronze, silver, gold** : trois étages de rangement. Bronze, c'est la donnée brute telle qu'on l'a reçue. Silver, la donnée nettoyée et traduite dans le modèle commun. Gold, des vues prêtes à l'emploi (tableaux de bord, rapprochements).
-- **Correspondance (mapping)** : « tel champ ici = tel champ là-bas ».
-- **Réconciliation** : vérifier qu'on retrouve bien à l'arrivée ce qui est parti.
-- **Lignage** : pour chaque donnée, on sait d'où elle vient et quand on l'a récupérée.
-- **Idempotence** : relancer un flux deux fois ne crée jamais de doublon.
+| Flux | Données | Règle métier |
+| --- | --- | --- |
+| 1. Yooz → IFS | Factures fournisseurs | Une facture sans commande, ou en écart avec sa commande, est mise de côté |
+| 2. Lucca → IFS | Collaborateurs (arrivées, modifications, départs) | Lucca fait foi |
+| 3. Progessi → IFS | Feuilles de temps validées | Le collaborateur doit exister dans IFS : le flux 2 passe avant |
+
+Aucune donnée réelle : on génère des données synthétiques, avec des défauts injectés volontairement pour tester les contrôles. Les logiciels sont remplacés par des API simulées, générées à partir de leurs spécifications officielles.
 
 ## En une phrase
 
-DataLift relie les logiciels d'une entreprise : l'IA prépare le travail, un humain valide, et la plateforme exécute proprement en gardant une trace de tout.
+DataLift connecte les logiciels d'une entreprise : l'IA propose les flux et le mapping, un humain valide, et la plateforme exécute avec contrôle, réconciliation et traçabilité.
 
-Pour aller plus loin : [CONTEXT.md](CONTEXT.md) (le produit en détail), [ARCHITECTURE.md](ARCHITECTURE.md) (comment c'est construit), [GLOSSARY.md](GLOSSARY.md) (tous les termes).
+Pour aller plus loin : [CONTEXT.md](CONTEXT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [GLOSSARY.md](GLOSSARY.md).
