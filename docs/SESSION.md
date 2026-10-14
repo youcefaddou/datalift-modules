@@ -6,24 +6,29 @@
 **Phase :** Sprint 0 (14/10 → 25/11/2026), Ydays 1 passé. Prochaine échéance : Ydays 2 le 25/11.
 
 ## Où on en est
-- Kit de démarrage en place (AGENTS.md, docs, squelette des dossiers). Aucun code applicatif.
-- Jira projet DataLift (clé `DL`) créé, branché en MCP sur le PC portable (pas sur le PC de bureau).
-- Backlog importé : 13 épopées, 67 stories, 27 tâches, réparties en DL Sprint 0 à 7 (19 hors sprint). Source : `jira/backlog_DL.csv`, généré par `jira/gen_backlog.py`.
-- `docs/ROADMAP.md` aligné sur les sprints (1 sprint = période jusqu'à une journée Ydays, story ≤ 5 points).
-- Gantt M1 : `docs/assets/gantt_datalift_m1.png` (`jira/gen_gantt.py`).
-- Oral de validation Ydays 3 (16/12) préparé : `docs/oral/DataLift_oral_validation_16-12-2026.pptx`, régénérable via `uv run --with python-pptx python docs/oral/build_oral_ydays3.py`.
+- Docs optimisées (VS Code, Docker, Jira), règles Cursor retirées. Aucun code applicatif.
+- Jira projet DataLift (clé `DL`) : 13 épopées, 67 stories, 27 tâches, DL Sprint 0 à 7. Après l'import, Jira fait foi (le CSV de `jira/` n'est plus tenu à jour).
+- Décidé : ontologie (objets, liens, actions) en M1 avant les connecteurs, exploitation en M2, questions transverses à la démo de Ydays 9. ROADMAP, ARCHITECTURE, CONTEXT, GLOSSARY à jour.
+- ADR-005 adoptée : ontologie (liens, actions, `datalift_id` + `silver_identity_map`).
+- Oral Ydays 3 prêt : `docs/oral/` (pptx + script de génération). Spec Yooz en place.
 
 ## Prochaine étape
-- Sprint 0 : squelette Python + Makefile (`make setup/test/lint`), puis récupérer les specs des 7 autres plateformes dans `mocks/specs/` et remplir les `SOURCE.md`.
-- Yooz : spec en place (`mocks/specs/yooz/`), compléter lien officiel, date et CGU dans `SOURCE.md`.
+- Rédiger l'ADR modèle IA (API, local ou Hugging Face), puis mettre Jira à jour (liste ci-dessous).
+- Sprint 0 : squelette Python + Makefile, puis specs des 7 autres plateformes (nécessaires aux champs de jointure de l'ontologie).
+
+## Jira à mettre à jour
+- Découper « Définir le modèle commun v1 dans contracts/ » : objets, puis liens + actions + `datalift_id`.
+- « Convertir Yooz et Lucca vers le modèle commun » : ajouter le remplissage de `silver_identity_map`.
+- Nouvelle story Sprint 6 : vues gold qui suivent les liens + question transverse en langage naturel.
+- Créer et clôturer la tâche ADR-005. Clôturer « Remplacer GitHub Projects par Jira dans la documentation ».
 
 ## Points ouverts
-- Décisions en attente : orchestration, technologie de l'interface, modèle IA.
-- Hébergement : VPS Hetzner pour l'environnement d'équipe, offre et configuration à choisir (ADR à rédiger).
+- Décisions en attente : orchestration, interface, modèle IA (ticket Sprint 2), offre du VPS Hetzner.
+- Hugging Face : licence Academia Hub via l'organisation Ynov (ZeroGPU 40 min/jour, dépôts privés). Avec Colab et Kaggle, à intégrer dans l'ADR modèle IA.
 - Flux M1 validés : Yooz, Lucca, Progessi vers IFS (voir docs/CONTEXT.md).
-- MCP Jira à reconfigurer sur le PC de bureau si besoin.
+- Yooz : compléter lien officiel, date et CGU dans `mocks/specs/yooz/SOURCE.md`.
+- MCP Atlassian à authentifier sur le PC de bureau (`/mcp`).
 
 ## Fichiers touchés récemment
-- `docs/ROADMAP.md`, `jira/*`, `docs/oral/*`, `docs/assets/*`
-- `mocks/specs/yooz/*`, `.gitignore`
-- Docs optimisées : `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `README.md`, `CONTRIBUTING.md`, `docs/*`, modèle de PR. Règles Cursor supprimées.
+- `docs/decisions/ADR-005-ontologie-liens-actions.md` (nouveau)
+- `docs/ROADMAP.md`, `docs/ARCHITECTURE.md`, `docs/CONTEXT.md`, `docs/GLOSSARY.md`, `docs/vulgarisation.md`, `AGENTS.md`

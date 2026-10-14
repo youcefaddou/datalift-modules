@@ -13,6 +13,7 @@ Plateforme d'intégration de données assistée par IA, inspirée de Palantir :
 3. **Demander** en langage naturel : "envoie les factures validées de Yooz vers IFS".
 4. **Valider** : l'IA propose le flux et les correspondances, un humain valide.
 5. **Exécuter et superviser** : exécution, contrôles, réconciliation, alertes.
+6. **Interroger** : poser des questions qui croisent plusieurs logiciels, grâce aux liens entre objets du modèle commun.
 
 La migration d'un logiciel à un autre est un cas particulier : un flux exécuté une seule fois.
 
