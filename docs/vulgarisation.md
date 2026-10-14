@@ -58,11 +58,11 @@ Détails : [ADR-005](decisions/ADR-005-ontologie-liens-actions.md) (ontologie) e
 
 8 logiciels sont au catalogue. Pour les 8, l'IA doit savoir proposer des correspondances. Pour 3 d'entre eux, on va jusqu'à l'exécution réelle vers IFS :
 
-| Flux | Données | Règle métier |
-| --- | --- | --- |
-| 1. Yooz → IFS | Factures fournisseurs | Une facture sans commande, ou en écart avec sa commande, est mise de côté |
-| 2. Lucca → IFS | Collaborateurs (arrivées, modifications, départs) | Lucca fait foi |
-| 3. Progessi → IFS | Feuilles de temps validées | Le collaborateur doit exister dans IFS : le flux 2 passe avant |
+| Flux               | Données                                            | Règle métier                                                               |
+| ------------------ | --------------------------------------------------- | ---------------------------------------------------------------------------- |
+| 1. Yooz → IFS     | Factures fournisseurs                               | Une facture sans commande, ou en écart avec sa commande, est mise de côté |
+| 2. Lucca → IFS    | Collaborateurs (arrivées, modifications, départs) | Lucca fait foi                                                               |
+| 3. Progessi → IFS | Feuilles de temps validées                         | Le collaborateur doit exister dans IFS : le flux 2 passe avant               |
 
 La démo de Ydays 9 montrera aussi des questions transverses posées en langage naturel.
 
@@ -72,4 +72,4 @@ Aucune donnée réelle : on génère des données synthétiques, avec des défau
 
 DataLift connecte les logiciels d'une entreprise : une IA open source propose les flux et le mapping, un humain valide, et la plateforme exécute avec contrôle, réconciliation et traçabilité.
 
-Pour aller plus loin : [CONTEXT.md](CONTEXT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [GLOSSARY.md](GLOSSARY.md), [décisions d'architecture](decisions/).
+Pour aller plus loin : [CONTEXT.md](CONTEXT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [GLOSSARY.md](GLOSSARY.md), [décisions d&#39;architecture](decisions/).
