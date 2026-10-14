@@ -23,11 +23,15 @@
 | Modèle commun (ontologie) | Représentation unique des objets métier, de leurs liens et des actions possibles, indépendante des logiciels |
 | Outil maître | Logiciel qui fait référence pour un type de données (Lucca pour les collaborateurs) |
 | Question transverse | Question dont la réponse croise les données de plusieurs logiciels |
+| Quantification | Compression d'un modèle (par exemple en 4 bits) pour qu'il tienne dans moins de mémoire GPU |
 | Rapprochement | Vérification qu'une facture correspond à sa commande d'achat |
 | Réconciliation | Vérification que la cible contient exactement ce qui a été envoyé |
 | Score de confiance | Probabilité estimée par l'IA qu'une correspondance proposée soit correcte |
+| Space (Hugging Face) | Application hébergée sur Hugging Face. Ici, elle sert le modèle IA de DataLift (ADR-006) |
 | Story points | Estimation de l'effort d'un ticket Jira (repère : 1 point ≈ 1 h effective, 5 maximum) |
+| Veille modèles | Revue, à chaque sprint, des nouveaux modèles open source pour garder les meilleurs (ADR-006) |
 | Webhook | Notification envoyée par un logiciel quand un événement se produit |
+| ZeroGPU | GPU partagé de Hugging Face, attribué le temps d'un calcul. Quota de 40 min/jour par compte avec la licence Ynov |
 
 ## Logiciels du catalogue
 

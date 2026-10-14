@@ -6,8 +6,9 @@
 2. Lire dans l'ordre : `README.md`, `docs/CONTEXT.md`, `docs/ARCHITECTURE.md`, `docs/CONVENTIONS.md`, `docs/DATA_POLICY.md`.
 3. Installer : Git, Python 3.12, Docker Desktop, VS Code.
 4. Extensions VS Code conseillées : Python, Ruff, Docker, Claude Code ou Gemini Code Assist.
-5. Cloner le dépôt, copier `.env.example` en `.env`, lancer `make setup` puis `make test`.
-6. Prendre un premier ticket Jira avec le libellé `good-first-issue`.
+5. Rejoindre l'organisation Ynov sur Hugging Face avec son adresse @ynov.com (lien reçu par mail de Ynov), puis créer un jeton personnel.
+6. Cloner le dépôt, copier `.env.example` en `.env`, lancer `make setup` puis `make test`.
+7. Prendre un premier ticket Jira avec le libellé `good-first-issue`.
 
 ## Travailler avec un assistant IA
 

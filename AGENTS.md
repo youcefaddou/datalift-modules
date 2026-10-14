@@ -27,6 +27,7 @@ Projet étudiant Ydays (Ynov), M1 puis M2. Chef de projet et architecte : Youcef
 
 - Python 3.12, Pydantic v2, httpx, FastAPI, pytest, ruff.
 - PostgreSQL, Microsoft Fabric (repli DuckDB).
+- IA : modèles open source (Qwen) sur un Space Hugging Face de l'organisation Ynov, en local pour le développement, budget 0 € (ADR-006).
 - Docker, Terraform, GitHub Actions. Hébergement : VPS Hetzner (offre à choisir).
 - Poste de travail : VS Code, Docker Desktop. Suivi : Jira, projet DataLift (clé `DL`). Code : GitHub.
 
