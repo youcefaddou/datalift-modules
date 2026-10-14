@@ -12,11 +12,11 @@
 
 ## Travailler avec un assistant IA
 
-| Outil | Fichier lu automatiquement |
-| --- | --- |
+| Outil                             | Fichier lu automatiquement                                      |
+| --------------------------------- | --------------------------------------------------------------- |
 | Claude Code (VS Code ou terminal) | `CLAUDE.md`, qui importe `AGENTS.md` et `docs/SESSION.md` |
-| Gemini Code Assist / Gemini CLI | `GEMINI.md`, qui importe les mêmes fichiers |
-| Autre outil ou chat web | Donner `AGENTS.md` en début de conversation |
+| Gemini Code Assist / Gemini CLI   | `GEMINI.md`, qui importe les mêmes fichiers                  |
+| Autre outil ou chat web           | Donner `AGENTS.md` en début de conversation                  |
 
 Bonnes pratiques :
 
