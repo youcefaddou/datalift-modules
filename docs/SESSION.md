@@ -19,9 +19,11 @@
 
 ## Points ouverts
 - Décisions en attente : orchestration, technologie de l'interface, modèle IA.
+- Hébergement : VPS Hetzner pour l'environnement d'équipe, offre et configuration à choisir (ADR à rédiger).
 - Flux M1 validés : Yooz, Lucca, Progessi vers IFS (voir docs/CONTEXT.md).
 - MCP Jira à reconfigurer sur le PC de bureau si besoin.
 
 ## Fichiers touchés récemment
 - `docs/ROADMAP.md`, `jira/*`, `docs/oral/*`, `docs/assets/*`
 - `mocks/specs/yooz/*`, `.gitignore`
+- Docs optimisées : `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `README.md`, `CONTRIBUTING.md`, `docs/*`, modèle de PR. Règles Cursor supprimées.

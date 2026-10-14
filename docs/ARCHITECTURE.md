@@ -17,7 +17,7 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 ```
 
 | Couche | Contenu | Règle |
-|---|---|---|
+| --- | --- | --- |
 | bronze | Réponses d'API brutes, horodatées | Jamais modifiées |
 | silver | Objets du modèle commun | Validés par les contrats et les contrôles qualité |
 | gold | Vues métier, indicateurs, réconciliation | Recalculables depuis silver |
@@ -25,9 +25,9 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 ## Plan de contrôle
 
 | Composant | Rôle | Où |
-|---|---|---|
+| --- | --- | --- |
 | Catalogue | Schémas des API et du modèle commun | modules (lecture des specs) |
-| Agent IA | Demande en langage naturel, flux et correspondances proposés | développé à part par le chef de projet |
+| Agent IA | Demande en langage naturel, flux et correspondances proposés | équipe data, dans ce dépôt (dossier à définir) |
 | Validation | Interface humaine | `ui/` |
 | Orchestrateur | Exécution des flux validés, dans l'ordre des dépendances (collaborateurs avant temps) | `pipelines/` (outil à valider) |
 | Supervision | Journaux, métriques, alertes | base dans `pipelines/`, avancé à part |
@@ -38,6 +38,12 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 - **Interface connecteur** : `read`, `write`, `describe_schema`, `health_check`.
 - **Définition de flux** : source, cible, objet, filtre, correspondances, planning, statut de validation.
 
+## Déploiement
+
+- Local : Docker Compose sur chaque poste (VS Code, Docker Desktop).
+- Environnement d'équipe : VPS Hetzner avec Docker Compose. Offre et configuration à choisir (ADR à rédiger).
+- CI : GitHub Actions. Infrastructure décrite avec Terraform.
+
 ## Décisions
 
-Voir `docs/decisions/`. Les décisions en attente : orchestration, interface, modèle IA.
+Voir `docs/decisions/`. Décisions en attente : orchestration, interface, modèle IA, offre du VPS.

@@ -3,7 +3,7 @@
 Les livrables suivent les objectifs officiels des sessions Ydays : c'est sur eux que porte l'évaluation. Un sprint couvre la période qui se termine par une journée Ydays. L'équipe travaille le jour Ydays (7 h) ; entre deux journées, seul le chef de projet avance.
 
 | Journée | Date | Sprint | Livrable (objectif de session) | Contenu DataLift |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Ydays 1 | 14/10/2026 | – | Équipe pressentie | Présentation du projet, recrutement |
 | Ydays 2 | 25/11/2026 | Sprint 0 (14/10 → 25/11) | Équipe constituée, environnements prêts | Rôles, onboarding, `make setup`, backlog Jira, specs des 8 plateformes récupérées |
 | Ydays 3 | 16/12/2026 | Sprint 1 (26/11 → 16/12) | Projet validé | Oral : cadrage, architecture, données synthétiques v1 |

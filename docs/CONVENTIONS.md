@@ -22,9 +22,11 @@
 
 ## Git
 
-- Branches : `feat/...`, `fix/...`, `docs/...`, `chore/...`, `test/...`.
-- Commits : Conventional Commits, par exemple `fix(connector-ifs): handle 429 rate limit`.
+- Une tâche = un ticket Jira = une branche = une PR.
+- Branches avec la clé du ticket : `feat/DL-123-...`, `fix/...`, `docs/...`, `chore/...`, `test/...`.
+- Commits : Conventional Commits, clé du ticket en fin de message, par exemple `fix(connector-ifs): handle 429 rate limit (DL-123)`.
 - Pull request obligatoire, au moins une relecture, CI verte.
+- `docs/SESSION.md` est mis à jour dans le même commit que le travail.
 
 ## Données
 
@@ -36,3 +38,4 @@
 
 - Chaque dossier de module a un README.md.
 - Toute décision technique structurante a une ADR dans `docs/decisions/`.
+- Rédaction en français, phrases courtes, termes techniques exacts, sans métaphore.

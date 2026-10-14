@@ -5,33 +5,30 @@
 
 ## Démarrage de session
 
-`docs/SESSION.md` est chargé ci-dessus. En premier message :
-1. Résume en 3 lignes : où on en est, prochaine étape, points bloquants.
-2. Si je n'ai pas donné d'objectif, demande-le. N'ouvre aucun autre fichier avant.
+1. Résume `docs/SESSION.md` en 3 lignes : où on en est, prochaine étape, points bloquants.
+2. Si aucun objectif n'est donné, demande-le. N'ouvre aucun autre fichier avant.
 
 ## Pendant la session
 
-- Tâche qui touche plus d'un fichier : propose un plan (je peux passer en mode plan avec Shift+Tab).
-- Specs d'API : utilise le sous-agent `spec-explorer`, ne lis jamais une spec entière dans la conversation.
-- Lis les fichiers de `docs/` à la demande, selon la table de AGENTS.md.
-- Lance les tests ciblés plutôt que toute la suite quand c'est possible.
+- Tâche sur plus d'un fichier : plan court d'abord (mode plan avec Shift+Tab).
+- Specs d'API : `/spec` ou sous-agent `spec-explorer`, jamais de lecture intégrale.
+- Fichiers de `docs/` : à la demande, selon la table de AGENTS.md.
+- Tests ciblés plutôt que toute la suite.
+- Commit et push uniquement sur demande.
 
-## Fin de tâche ou changement de sujet
+## Fin de tâche
 
-1. Je lance `/handoff` : tu mets à jour `docs/SESSION.md` et proposes un message de commit.
-2. Je fais le commit, puis `/clear` pour repartir sur une session neuve.
-3. `/compact` seulement si on continue la même tâche et que le contexte est chargé.
+1. `/handoff` : met à jour `docs/SESSION.md` et propose un message de commit.
+2. `SESSION.md` part dans le même commit que le travail : c'est lui qui transmet l'état d'un poste à l'autre.
+3. Ensuite `/clear`. `/compact` seulement pour continuer la même tâche avec un contexte chargé.
 
-## Compact Instructions
+## Compaction
 
-Lors d'une compaction, conserve toujours : l'objectif de la session, la liste des fichiers modifiés, les décisions prises, les commandes de test, les problèmes non résolus.
+Conserver : objectif de la session, fichiers modifiés, décisions prises, commandes de test, problèmes non résolus.
 
-## Commandes du projet
+## Commandes
 
-À confirmer à l'initialisation (Ydays 2) : `make setup`, `make test`, `make lint`, `make mocks`.
-
-## Commandes personnalisées
-
-- `/handoff` : met à jour SESSION.md avant un /clear.
+- Projet (à confirmer à Ydays 2) : `make setup`, `make test`, `make lint`, `make mocks`.
+- `/handoff` : passation avant `/clear`.
 - `/adr <sujet>` : rédige une décision d'architecture.
 - `/spec <logiciel> <question>` : interroge une spec d'API via le sous-agent.
