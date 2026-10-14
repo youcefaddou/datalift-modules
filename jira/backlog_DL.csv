@@ -1,0 +1,877 @@
+Issue ID,Issue Type,Summary,Parent,Description,Priority,Story Points,Sprint,Start date,Due date,Labels,Labels,Labels,Labels
+1,Epic,Socle et environnements,,Épopée DataLift M1 : Socle et environnements.,,,,2026-10-14,2026-12-16,,,,
+2,Epic,Catalogue et API simulées,,Épopée DataLift M1 : Catalogue et API simulées.,,,,2026-10-14,2027-05-05,,,,
+3,Epic,Données synthétiques,,Épopée DataLift M1 : Données synthétiques.,,,,2026-11-26,2027-01-20,,,,
+4,Epic,Connecteurs,,Épopée DataLift M1 : Connecteurs.,,,,2026-12-17,2027-05-05,,,,
+5,Epic,Modèle commun,,Épopée DataLift M1 : Modèle commun.,,,,2026-11-26,2027-01-21,,,,
+6,Epic,Qualité des données,,Épopée DataLift M1 : Qualité des données.,,,,2026-12-17,2027-04-14,,,,
+7,Epic,Agent IA,,Épopée DataLift M1 : Agent IA.,,,,2026-12-17,2027-03-24,,,,
+8,Epic,Interface de validation,,Épopée DataLift M1 : Interface de validation.,,,,2027-01-22,2027-03-24,,,,
+9,Epic,Exécution et réconciliation,,Épopée DataLift M1 : Exécution et réconciliation.,,,,2027-03-04,2027-05-05,,,,
+10,Epic,Supervision et tableau de bord,,Épopée DataLift M1 : Supervision et tableau de bord.,,,,2027-03-25,2027-05-05,,,,
+11,Epic,Sécurité,,Épopée DataLift M1 : Sécurité.,,,,2026-11-26,2027-05-05,,,,
+12,Epic,"Documentation, recette et pilotage",,"Épopée DataLift M1 : Documentation, recette et pilotage.",,,,2026-10-14,2027-05-27,,,,
+13,Epic,Communication (optionnel),,Épopée DataLift M1 : Communication (optionnel).,,,,2026-11-25,2027-05-27,,,,
+100,Task,"Préparer le squelette Python et le Makefile (setup, test, lint)",1,"En tant que chef de projet, je veux un squelette (pyproject, ruff, pytest, Makefile) qui s'installe en une commande, afin que chaque équipier soit opérationnel en moins d'une heure le 25/11.
+
+Exigences : ENF-05, ENF-06 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- `make setup`, `make test`, `make lint` fonctionnent sur un poste Linux vierge
+- Un test d'exemple passe
+- README à jour
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 0,,,youcef,ENF-05,ENF-06,
+101,Task,"Configurer Jira : espace DL, sprints, import du backlog",12,"En tant que chef de projet, je veux un Jira prêt avec backlog et sprints calés sur les journées Ydays, afin de piloter le projet et le présenter au jury.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Espace DataLift clé DL, sprints 0 à 7 créés avec objectifs
+- Backlog importé, épopées datées dans la Chronologie
+- 5 équipiers invités
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,youcef,ENF-06,pilotage,
+102,Task,Relier Jira et GitHub (GitHub for Jira),12,"En tant que chef de projet, je veux voir branches, commits et PR dans chaque ticket, afin de suivre l'avancement sans double saisie.
+
+Exigences : ENF-06 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- Application installée sur le dépôt datalift-modules
+- Une branche feat/DL-xx apparaît dans le ticket DL-xx
+- Règle de nommage ajoutée dans docs/CONVENTIONS.md
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,1,DL Sprint 0,,,youcef,ENF-06,pilotage,
+103,Task,Remplacer GitHub Projects par Jira dans la documentation,12,"En tant que chef de projet, je veux des docs qui citent Jira comme outil de suivi, afin que l'équipe utilise un seul outil.
+
+Exigences : ENF-06 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- README, CONTRIBUTING et ONBOARDING mentionnent Jira
+- Plus aucune mention de GitHub Projects
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,1,DL Sprint 0,,,youcef,ENF-06,pilotage,
+104,Task,Préparer et animer l'onboarding du 25/11,12,"En tant que chef de projet, je veux un support d'onboarding (projet, règles, outils, rôles), afin que l'équipe démarre sur les mêmes bases.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Support présenté le 25/11
+- Rôles attribués et notés dans Jira
+- Chacun a lu AGENTS.md et ONBOARDING.md
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,youcef,ENF-06,pilotage,
+105,Task,Installer son environnement et lancer make setup,1,"En tant que développeur de l'équipe, je veux un poste prêt (Python 3.12, Docker, Git, accès au dépôt et à Jira), afin de contribuer dès le premier jour.
+
+Exigences : ENF-05 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- `make setup` et `make test` passent sur chaque poste
+- Chaque équipier a poussé une branche de test liée à un ticket DL
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,ia-data,ENF-05,ydays2-autonome,
+106,Story,Mettre en place la CI GitHub Actions (lint et tests),1,"En tant que développeur de l'équipe, je veux que chaque PR lance ruff et pytest automatiquement, afin de ne jamais fusionner du code cassé.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Workflow déclenché sur chaque PR
+- Une PR qui casse un test est bloquée
+- Badge de statut dans le README
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 0,,,infra,ENF-06,ydays2-autonome,
+107,Story,Écrire le docker-compose de base (PostgreSQL),1,"En tant que développeur de l'équipe, je veux une base PostgreSQL locale lancée en une commande, afin de stocker les couches bronze, silver et gold.
+
+Exigences : ENF-05 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- `docker compose up` lance PostgreSQL
+- Identifiants lus depuis .env (jamais dans le code)
+- Documenté dans infra/README.md
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 0,,,infra,ENF-05,ydays2-autonome,
+108,Story,Récupérer la spécification d'API Yooz et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Yooz dans mocks/specs/yooz/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/yooz/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+109,Story,Récupérer la spécification d'API IFS et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API IFS dans mocks/specs/ifs/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/ifs/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+110,Story,Récupérer la spécification d'API Lucca et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Lucca dans mocks/specs/lucca/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/lucca/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+111,Story,Récupérer la spécification d'API Progessi et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Progessi dans mocks/specs/progessi/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/progessi/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+112,Story,Récupérer la spécification d'API TeamTailor et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API TeamTailor dans mocks/specs/teamtailor/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/teamtailor/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+113,Story,Récupérer la spécification d'API eTemptation et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API eTemptation dans mocks/specs/etemptation/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/etemptation/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+114,Story,Récupérer la spécification d'API Notilus et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Notilus dans mocks/specs/notilus/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/notilus/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+115,Story,Récupérer la spécification d'API Sage et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Sage dans mocks/specs/sage/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+
+Exigences : EF-10 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/sage/
+- SOURCE.md rempli : URL, date, version, licence, qualité de la spec
+- Aucune donnée réelle dans les exemples
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
+116,Story,Définir le modèle commun v1 dans contracts/,5,"En tant qu'intégrateur, je veux un schéma unique pour fournisseurs, commandes, factures, collaborateurs, projets et temps, afin que tous les connecteurs parlent la même langue.
+
+Exigences : EF-12 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Modèles Pydantic v2 versionnés dans contracts/
+- Chaque champ provient d'une spec (aucun champ inventé)
+- Schéma documenté
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 1,,,youcef,EF-12,,
+117,Story,Ajouter le lignage à chaque donnée silver,5,"En tant qu'intégrateur, je veux source_system, source_id et extracted_at sur chaque enregistrement, afin de retrouver toute donnée jusqu'à sa source.
+
+Exigences : EF-13 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Champs de lignage obligatoires dans le modèle commun
+- Test qui refuse un enregistrement sans lignage
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 1,,,youcef,EF-13,,
+118,Story,Définir l'interface connecteur dans contracts/,4,"En tant qu'intégrateur, je veux un modèle de connecteur (lecture, écriture, pagination, erreurs), afin d'ajouter un connecteur sans modifier le cœur.
+
+Exigences : EF-07, ENF-07 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- Classe abstraite documentée dans contracts/
+- Un connecteur factice l'implémente et passe les tests de contrat
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 1,,,youcef,EF-07,ENF-07,
+119,Story,Générer les données synthétiques v1 des 3 flux,3,"En tant qu'intégrateur, je veux des fournisseurs, commandes, factures, collaborateurs, projets et temps synthétiques, afin de présenter un jeu de données crédible à l'oral de validation.
+
+Exigences : ENF-03 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Générateur reproductible (graine fixe)
+- Volumes documentés
+- Aucune donnée réelle
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 1,,,youcef,ENF-03,,
+120,Story,Injecter et documenter les défauts v1,3,"En tant qu'intégrateur, je veux des défauts connus (doublons, montants incohérents, facture sans commande, fournisseur inconnu, collaborateur absent, heures hors limites, champs manquants), afin de mesurer ce que DataLift détecte.
+
+Exigences : EF-50 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Chaque défaut injecté est listé avec son identifiant dans synthetic_data/
+- Fichier de vérité terrain exploitable par les tests
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 1,,,youcef,EF-50,,
+121,Task,ADR : accès Microsoft Fabric ou repli DuckDB,1,"En tant que chef de projet, je veux une décision écrite sur le stockage analytique, afin de ne pas bloquer le sprint 2.
+
+Exigences : ENF-05 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- 2 options comparées (coût, accès équipe, effort)
+- ADR validé dans docs/decisions/
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 1,,,youcef,ENF-05,decision,
+122,Task,ADR : encadrer l'usage de jeux JSON anonymisés,11,"En tant que chef de projet, je veux une procédure écrite pour utiliser des exemples JSON anonymisés, afin de rester conforme (RGPD, aucune donnée identifiable).
+
+Exigences : EF-82, ENF-03 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Procédure d'anonymisation vérifiable
+- Aucune trace d'origine dans le dépôt ni dans Jira
+- DATA_POLICY.md et AGENTS.md mis à jour
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 1,,,youcef,EF-82,ENF-03,decision
+123,Task,Préparer le support de l'oral de validation,12,"En tant que chef de projet, je veux une présentation du cadrage, de l'architecture et des données v1, afin de faire valider le projet le 16/12.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Support prêt le 15/12
+- Démo des données v1 incluse
+- Gantt présenté
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 1,,,youcef,pilotage,,
+124,Task,Répéter l'oral de validation en équipe,12,"En tant que développeur de l'équipe, je veux répéter l'oral et répartir les prises de parole, afin de présenter un projet maîtrisé par toute l'équipe.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Chaque équipier présente sa partie
+- Durée respectée
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 1,,,ia-data,,,
+125,Task,Définir les règles de qualité et leurs seuils,6,"En tant que chef de projet, je veux des règles écrites pour doublons, orphelins et incohérences, afin que l'équipe les code sans ambiguïté le 21/01.
+
+Exigences : EF-50, EF-51 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Une fiche par règle : définition, champs, seuil, exemple
+- Règles reliées aux défauts injectés
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,youcef,EF-50,EF-51,
+126,Story,Stocker les secrets hors du code,11,"En tant qu'intégrateur, je veux que les clés d'API soient lues depuis l'environnement ou un coffre, afin qu'aucun secret ne soit dans le dépôt.
+
+Exigences : EF-81 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Aucun secret dans le dépôt (scan en CI)
+- .env.example à jour
+- Connecteurs lisant leurs clés depuis la configuration
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,youcef,EF-81,,
+127,Task,ADR : modèle IA (API ou local) et budget,7,"En tant que chef de projet, je veux une décision écrite sur le modèle IA et son coût, afin de démarrer l'agent IA au sprint 3.
+
+Exigences : ENF-08 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- 2 options comparées (qualité, coût, confidentialité)
+- Budget plafond fixé
+- ADR validé
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 2,,,youcef,ENF-08,decision,
+128,Story,Générer l'API simulée Yooz,2,"En tant que développeur de l'équipe, je veux une API Yooz simulée à partir de sa spec, afin de développer sans accès à la vraie API.
+
+Exigences : EF-11 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Endpoints factures et commandes servis depuis la spec
+- Lancée par docker compose
+- Test de contrat qui passe
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-11,,
+129,Story,Générer l'API simulée Lucca,2,"En tant que développeur de l'équipe, je veux une API Lucca simulée à partir de sa spec, afin de développer sans accès à la vraie API.
+
+Exigences : EF-11 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Endpoints collaborateurs servis depuis la spec
+- Lancée par docker compose
+- Test de contrat qui passe
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-11,,
+130,Story,Générer l'API simulée IFS (lecture et écriture),2,"En tant que développeur de l'équipe, je veux une API IFS simulée qui accepte les écritures, afin de tester les envois sans ERP réel.
+
+Exigences : EF-11 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Endpoints fournisseurs, commandes, factures, collaborateurs, temps
+- Une écriture est relisible
+- Lancée par docker compose
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 2,,,infra,EF-11,,
+131,Story,Finaliser les données synthétiques et les charger dans les API simulées,3,"En tant que développeur de l'équipe, je veux les API simulées alimentées avec les données synthétiques, afin que les connecteurs lisent des données réalistes.
+
+Exigences : EF-01, EF-02 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Données v2 chargées dans Yooz, Lucca et IFS simulés
+- Défauts injectés présents et documentés
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-01,EF-02,
+132,Story,Connecteur Yooz : lire les factures validées et leur commande,4,"En tant qu'intégrateur, je veux récupérer les factures validées avec leur référence de commande, afin d'alimenter le flux 1.
+
+Exigences : EF-01, EF-05 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Toutes les factures du jeu de test récupérées avec leur commande
+- Pagination et authentification gérées
+- Implémente l'interface connecteur
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 2,,,ia-data,EF-01,EF-05,
+133,Story,Connecteur Lucca : lire les collaborateurs,4,"En tant qu'intégrateur, je veux récupérer les créations, modifications et départs, afin d'alimenter le flux 2.
+
+Exigences : EF-02, EF-05 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Tous les collaborateurs du jeu de test récupérés
+- Pagination et authentification gérées
+- Implémente l'interface connecteur
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 2,,,ia-data,EF-02,EF-05,
+134,Story,Stocker les réponses brutes en bronze,4,"En tant qu'intégrateur, je veux une copie brute et horodatée de chaque lecture, afin de pouvoir rejouer et auditer.
+
+Exigences : EF-13 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Tables bronze_ créées
+- Données identiques à la source, horodatées
+- Relecture possible
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,infra,EF-13,,
+135,Story,Profiler les tables bronze,6,"En tant qu'utilisateur métier, je veux le volume, les types, les valeurs nulles et distinctes de chaque table, afin de connaître l'état des données avant de les utiliser.
+
+Exigences : EF-50 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Profil généré pour toutes les tables bronze
+- Exportable (HTML ou CSV)
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-50,,
+136,Story,Convertir Yooz et Lucca vers le modèle commun (silver),5,"En tant qu'intégrateur, je veux les données bronze converties dans le modèle commun, afin de préparer l'envoi vers IFS.
+
+Exigences : EF-12, EF-13 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Tables silver_ remplies
+- Lignage présent sur chaque ligne
+- Tests de conversion
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 2,,,ia-data,EF-12,EF-13,
+137,Story,Détecter les doublons,6,"En tant qu'utilisateur métier, je veux que les doublons (factures, collaborateurs) soient signalés, afin de ne pas envoyer deux fois la même donnée.
+
+Exigences : EF-50, EF-71 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Au moins [90 %] des doublons injectés détectés
+- Test sur la vérité terrain
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-50,EF-71,
+138,Story,Détecter les références orphelines,6,"En tant qu'utilisateur métier, je veux que les factures sans commande, fournisseurs inconnus et collaborateurs absents soient signalés, afin de les mettre de côté avant envoi.
+
+Exigences : EF-50 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Toutes les références orphelines injectées détectées
+- Test sur la vérité terrain
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-50,,
+139,Story,"Détecter les incohérences (montants, champs manquants, heures)",6,"En tant qu'utilisateur métier, je veux que les valeurs incohérentes soient signalées, afin de corriger avant envoi.
+
+Exigences : EF-50, EF-71 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Au moins [90 %] des incohérences injectées détectées
+- Test sur la vérité terrain
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-50,EF-71,
+140,Story,Rapprocher chaque facture de sa commande d'achat,6,"En tant qu'utilisateur métier, je veux que chaque facture soit comparée à sa commande, afin de bloquer les factures sans commande ou en écart.
+
+Exigences : EF-51 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Factures sans commande signalées
+- Écarts de montant ou de quantité signalés avec leur valeur
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 2,,,ia-data,EF-51,,
+141,Story,Générer le rapport de qualité v1,6,"En tant qu'utilisateur métier, je veux un rapport lisible par un non-technicien, afin de comprendre la qualité de mes données.
+
+Exigences : EF-50 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Synthèse et détail par table
+- Taux de détection des défauts injectés affiché
+- Exportable
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,ia-data,EF-50,,
+142,Story,Écrire les tests de contrat des connecteurs,1,"En tant que développeur de l'équipe, je veux des tests qui vérifient chaque connecteur contre son API simulée, afin de détecter une rupture de contrat.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Tests dans tests/contract lancés en CI
+- Un champ manquant fait échouer le test
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 2,,,infra,ENF-06,,
+143,Task,"Préparer le socle de l'agent IA (client modèle, coût)",7,"En tant que chef de projet, je veux un client IA configuré, avec clé hors du code et mesure du coût, afin que l'équipe se concentre sur le mapping le 03/03.
+
+Exigences : ENF-08, EF-81 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Appel au modèle fonctionnel
+- Coût et jetons journalisés par appel
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 3,,,youcef,ENF-08,EF-81,
+144,Task,ADR : technologie de l'interface (Next.js ou Streamlit),8,"En tant que chef de projet, je veux une décision écrite sur l'interface, afin de démarrer l'interface au sprint 4.
+
+Exigences : EF-30 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- 2 options comparées (effort, compétences équipe, rendu)
+- ADR validé
+- Squelette d'interface prêt avant le 24/03
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 3,,,youcef,EF-30,decision,
+145,Story,Charger les schémas des 8 plateformes dans le catalogue,2,"En tant qu'intégrateur, je veux consulter le schéma de chaque plateforme, afin que l'IA travaille sur toutes les paires.
+
+Exigences : EF-10 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Schémas des 8 plateformes consultables
+- Plateformes à spec incomplète signalées
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 3,,,ia-data,EF-10,,
+146,Story,Comprendre une demande en langage naturel,7,"En tant qu'utilisateur métier, je veux écrire ma demande en français, afin de créer un flux sans compétence technique.
+
+Exigences : EF-20 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Source, cible, objet et filtre extraits
+- Demandes de référence des 3 flux comprises
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 3,,,ia-data,EF-20,,
+147,Story,Proposer la correspondance des champs avec score de confiance,7,"En tant qu'intégrateur, je veux une proposition champ à champ avec un score, afin de valider vite les cas sûrs et me concentrer sur les autres.
+
+Exigences : EF-21 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Proposition pour les 3 flux
+- Score de confiance par champ
+- Aucun champ inventé hors spec
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 3,,,ia-data,EF-21,,
+148,Story,Constituer le jeu de référence et mesurer la précision,7,"En tant qu'intégrateur, je veux un jeu de correspondances attendues et un calcul de précision, afin de prouver la qualité du mapping.
+
+Exigences : EF-21 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Jeu de référence pour les 3 flux
+- Précision mesurée automatiquement
+- Au moins [80 %] de correspondances correctes
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 3,,,ia-data,EF-21,,
+149,Story,Expliquer chaque proposition de correspondance,7,"En tant qu'utilisateur métier, je veux une explication courte pour chaque champ proposé, afin de comprendre et faire confiance.
+
+Exigences : EF-23 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Explication affichée pour chaque champ
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 3,,,ia-data,EF-23,,
+150,Story,Proposer des correspondances pour toute paire du catalogue,7,"En tant qu'intégrateur, je veux une proposition entre deux plateformes quelconques, afin de préparer les flux du M2.
+
+Exigences : EF-22 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Proposition générée pour toute paire des 8 plateformes
+- Résultat consultable
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 3,,,ia-data,EF-22,,
+151,Story,Connecteur IFS : écrire et relire les collaborateurs,4,"En tant qu'intégrateur, je veux créer et mettre à jour les collaborateurs dans IFS, afin d'alimenter le flux 2.
+
+Exigences : EF-04, EF-05 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Enregistrement créé puis relu à l'identique
+- Mise à jour et départ gérés
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 3,,,infra,EF-04,EF-05,
+152,Task,"ADR : outil d'orchestration (Airflow, Dagster ou Fabric)",9,"En tant que chef de projet, je veux une décision écrite sur l'orchestration, afin d'exécuter les flux au sprint 5.
+
+Exigences : EF-40 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Options comparées (effort, coût, intégration)
+- ADR validé
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 4,,,youcef,EF-40,decision,
+153,Story,Authentifier les utilisateurs et gérer les rôles,11,"En tant qu'intégrateur, je veux des rôles lecture et validation, afin qu'un rôle lecture ne puisse pas valider un flux.
+
+Exigences : EF-80 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Connexion obligatoire
+- Un rôle lecture ne peut pas valider un flux (test)
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 4,,,youcef,EF-80,,
+154,Story,Afficher le flux proposé et ses correspondances,8,"En tant qu'utilisateur métier, je veux voir le flux et ses correspondances dans une interface, afin de les vérifier sans formation technique.
+
+Exigences : EF-30 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Source, cible, champs, score et explication affichés
+- Utilisable sans formation technique
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 4,,,ia-data,EF-30,,
+155,Story,"Valider, corriger ou rejeter chaque correspondance",8,"En tant qu'intégrateur, je veux valider, corriger ou rejeter chaque proposition, afin de garder la main sur ce qui est exécuté.
+
+Exigences : EF-31 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Chaque proposition modifiable
+- Décision enregistrée avec auteur et date
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 4,,,ia-data,EF-31,,
+156,Story,Bloquer l'exécution d'un flux non validé,8,"En tant qu'intégrateur, je veux qu'aucun flux ne s'exécute sans validation enregistrée, afin de respecter le principe l'IA propose, l'humain valide.
+
+Exigences : EF-25 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Test : un flux non validé ne s'exécute pas
+- Message clair à l'utilisateur
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 4,,,ia-data,EF-25,,
+157,Story,Historiser les versions d'un flux,8,"En tant qu'intégrateur, je veux consulter les versions précédentes d'un flux, afin de savoir ce qui a changé et qui l'a validé.
+
+Exigences : EF-32 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Version précédente consultable
+- Auteur et date de chaque version
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 4,,,ia-data,EF-32,,
+158,Story,"Proposer et tester les transformations (formats, dates, codes)",7,"En tant qu'intégrateur, je veux les transformations nécessaires proposées par l'IA, afin d'envoyer des données au bon format.
+
+Exigences : EF-24 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Transformations testées sur les cas documentés
+- Validables dans l'interface
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,5,DL Sprint 4,,,ia-data,EF-24,,
+159,Story,Connecteur IFS : écrire et relire les factures fournisseurs,4,"En tant qu'intégrateur, je veux créer les factures fournisseurs dans IFS, afin d'alimenter le flux 1.
+
+Exigences : EF-04 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Enregistrement créé puis relu à l'identique
+- Lien avec la commande d'achat conservé
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 4,,,infra,EF-04,,
+160,Story,Tester l'interface avec un utilisateur non technique,8,"En tant qu'utilisateur métier, je veux valider un flux sans aide, afin de prouver l'ergonomie.
+
+Exigences : EF-30 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Un testeur non technique valide un flux seul
+- Remarques notées en tickets
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 4,,,ia-data,EF-30,,
+161,Story,Déployer l'orchestrateur (à la demande et planifié),9,"En tant qu'intégrateur, je veux lancer un flux à la demande ou selon un planning, afin d'automatiser les échanges.
+
+Exigences : EF-40 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Exécution déclenchée et tracée
+- Planning configurable
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 5,,,youcef,EF-40,,
+162,Story,Journaliser chaque exécution,10,"En tant qu'intégrateur, je veux la durée, les volumes, le statut et les erreurs de chaque exécution, afin de superviser les flux.
+
+Exigences : EF-60, ENF-04 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Journal consultable par flux et par exécution
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,youcef,EF-60,ENF-04,
+163,Story,Alerter en cas d'échec ou d'anomalie,10,"En tant qu'intégrateur, je veux une alerte en cas d'échec ou d'anomalie, afin de réagir vite.
+
+Exigences : EF-61 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Alerte reçue en moins de [5] minutes
+- Test avec un échec provoqué
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,youcef,EF-61,,
+164,Story,Pseudonymiser les données des collaborateurs hors démo,11,"En tant qu'intégrateur, je veux que les données personnelles soient pseudonymisées hors démo, afin de protéger les collaborateurs.
+
+Exigences : EF-82 | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Accès restreint
+- Pseudonymisation cohérente entre tables
+- Test : aucune donnée identifiable dans le jeu pseudonymisé
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,youcef,EF-82,,
+165,Story,Exécuter le flux 2 : Lucca vers IFS,9,"En tant qu'utilisateur métier, je veux synchroniser les collaborateurs de Lucca dans IFS, afin que IFS reflète toujours Lucca.
+
+Exigences : EF-44 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Créations, modifications et départs répercutés dans IFS
+- Une modification dans IFS ne remonte pas dans Lucca
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 5,,,ia-data,EF-44,flux-2,
+166,Story,Exécuter le flux 1 : Yooz vers IFS,9,"En tant qu'utilisateur métier, je veux envoyer les factures validées de Yooz vers IFS, afin de ne plus les ressaisir.
+
+Exigences : EF-40, EF-51 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Factures rapprochées envoyées
+- Factures sans commande ou en écart mises de côté
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 5,,,ia-data,EF-40,EF-51,flux-1
+167,Story,Garantir l'idempotence des flux,9,"En tant qu'intégrateur, je veux que rejouer un flux ne crée aucun doublon, afin de relancer sans risque.
+
+Exigences : EF-43, ENF-02 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Test : deux exécutions donnent le même résultat dans IFS
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 5,,,ia-data,EF-43,ENF-02,
+168,Story,Mettre de côté les enregistrements en erreur,9,"En tant qu'intégrateur, je veux la liste des enregistrements rejetés avec leur motif, afin de les retraiter.
+
+Exigences : EF-45 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Rejets listés avec motif
+- Retraitement possible
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,ia-data,EF-45,,
+169,Story,Produire le rapport de réconciliation,9,"En tant qu'utilisateur métier, je veux comparer la source et la cible après exécution, afin de prouver que rien n'est perdu.
+
+Exigences : EF-52 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Rapport par flux
+- Aucun écart non expliqué (rejet, filtre, doublon)
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 5,,,ia-data,EF-52,,
+170,Story,Rejouer les erreurs temporaires sans doublon,4,"En tant qu'intégrateur, je veux que les erreurs temporaires soient rejouées automatiquement, afin de ne pas perdre de données.
+
+Exigences : EF-06, ENF-02 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Erreur temporaire simulée puis rejouée sans doublon
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,infra,EF-06,ENF-02,
+171,Story,Appliquer les règles de nettoyage validées avant envoi,6,"En tant qu'intégrateur, je veux les données nettoyées selon les règles validées, afin d'envoyer des données propres.
+
+Exigences : EF-50 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Données nettoyées conformes aux règles
+- Traçabilité des corrections
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 5,,,ia-data,EF-50,,
+172,Story,Tenir un journal d'audit des actions sensibles,11,"En tant qu'intégrateur, je veux tracer validations, modifications et suppressions, afin de savoir qui a fait quoi.
+
+Exigences : EF-83 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- Validation, modification et suppression tracées avec auteur et date
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 6,,,youcef,EF-83,,
+173,Task,Mesurer le coût et la consommation des appels IA,10,"En tant que chef de projet, je veux le coût et le nombre d'appels IA par flux, afin de maîtriser le budget.
+
+Exigences : ENF-08 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- Coût par flux visible dans le tableau de bord
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 6,,,youcef,ENF-08,,
+174,Task,Tester la performance (1 000 enregistrements),9,"En tant que chef de projet, je veux vérifier le temps de traitement, afin de respecter l'exigence de performance.
+
+Exigences : ENF-01 | MoSCoW : S | Profil : youcef
+
+Critères d'acceptation :
+- [1 000] enregistrements par flux traités en moins de [5] minutes
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 6,,,youcef,ENF-01,,
+175,Story,Générer l'API simulée Progessi,2,"En tant que développeur de l'équipe, je veux une API Progessi simulée, afin de développer le flux 3.
+
+Exigences : EF-11 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Feuilles de temps servies depuis la spec
+- Lancée par docker compose
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 6,,,ia-data,EF-11,flux-3,
+176,Story,Connecteur Progessi : lire les feuilles de temps validées,4,"En tant qu'intégrateur, je veux récupérer les feuilles de temps validées, afin d'alimenter le flux 3.
+
+Exigences : EF-03 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Toutes les feuilles validées récupérées
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 6,,,ia-data,EF-03,flux-3,
+177,Story,Connecteur IFS : écrire les temps,4,"En tant qu'intégrateur, je veux créer les temps dans IFS, afin d'alimenter le flux 3.
+
+Exigences : EF-04 | MoSCoW : S | Profil : infra
+
+Critères d'acceptation :
+- Enregistrement créé puis relu à l'identique
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 6,,,infra,EF-04,flux-3,
+178,Story,Exécuter le flux 3 en respectant l'ordre collaborateurs puis temps,9,"En tant qu'utilisateur métier, je veux envoyer les feuilles de temps validées vers IFS, afin de ne plus les ressaisir.
+
+Exigences : EF-41 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Aucun temps envoyé pour un collaborateur absent d'IFS
+- Temps orphelins mis de côté
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 6,,,ia-data,EF-41,flux-3,
+179,Story,"Tableau de bord : volumes, délais et taux d'erreur par flux",10,"En tant que décideur, je veux suivre les flux d'un coup d'œil, afin de piloter l'activité.
+
+Exigences : EF-70 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Indicateurs par flux à jour
+- Accessible depuis l'interface
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 6,,,ia-data,EF-70,,
+180,Story,Signaler les anomalies dans le tableau de bord,10,"En tant que décideur, je veux voir les anomalies (montants, doublons, heures hors limites), afin d'agir avant qu'elles coûtent.
+
+Exigences : EF-71 | MoSCoW : S | Profil : ia-data
+
+Critères d'acceptation :
+- Anomalies injectées signalées
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,3,DL Sprint 6,,,ia-data,EF-71,,
+181,Story,Écrire les tests de bout en bout des flux 1 et 2,12,"En tant que développeur de l'équipe, je veux des tests e2e qui rejouent les flux, afin de sécuriser la démo.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : infra
+
+Critères d'acceptation :
+- Tests dans tests/e2e lancés en CI
+- Flux 1 et 2 couverts
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 6,,,infra,ENF-06,,
+182,Story,Rédiger la documentation utilisateur et technique,12,"En tant que développeur de l'équipe, je veux une documentation à jour, afin qu'un nouvel arrivant comprenne et utilise DataLift.
+
+Exigences : ENF-06 | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Guide utilisateur
+- Guide d'installation
+- Architecture à jour
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 6,,,ia-data,ENF-06,,
+183,Task,Rédiger le cahier de recette,12,"En tant que chef de projet, je veux un test de recette par exigence M, afin de prouver que le cahier des charges est respecté.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Une ligne par exigence M avec résultat attendu
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 7,,,youcef,pilotage,,
+184,Task,Exécuter le cahier de recette,12,"En tant que développeur de l'équipe, je veux dérouler chaque test de recette, afin de valider le produit.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Chaque test exécuté et noté
+- Anomalies créées en tickets
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 7,,,ia-data,,,
+185,Task,Corriger les anomalies de recette,12,"En tant que développeur de l'équipe, je veux corriger les anomalies bloquantes, afin de livrer un produit stable.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Aucune anomalie bloquante ouverte
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,5,DL Sprint 7,,,ia-data,,,
+186,Task,Préparer le support et la démo de l'oral final,12,"En tant que chef de projet, je veux une présentation et une démo rodées, afin de réussir l'oral final.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : youcef
+
+Critères d'acceptation :
+- Support prêt
+- Démo enregistrée en secours
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,3,DL Sprint 7,,,youcef,pilotage,,
+187,Task,Répéter l'oral final en équipe,12,"En tant que développeur de l'équipe, je veux répéter l'oral, afin de présenter un projet maîtrisé.
+
+Exigences : aucune (pilotage) | MoSCoW : M | Profil : ia-data
+
+Critères d'acceptation :
+- Chaque équipier présente sa partie
+- Durée respectée
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",High,2,DL Sprint 7,,,ia-data,,,
+188,Story,Déclencher un flux sur événement (webhook),9,"En tant qu'intégrateur, je veux qu'un événement source déclenche l'envoi, afin de réduire le délai.
+
+Exigences : EF-42 | MoSCoW : C | Profil : ia-data
+
+Critères d'acceptation :
+- Un événement source déclenche l'envoi
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,5,,,,ia-data,EF-42,,
+189,Task,Étude de marché et concurrence,13,"En tant que membre de l'équipe, je veux une analyse de l'existant (n8n, Make, Workato, Boomi...), afin de positionner DataLift.
+
+Exigences : aucune (pilotage) | MoSCoW : C | Profil : marketing
+
+Critères d'acceptation :
+- Tableau comparatif
+- Sources citées
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,3,,,,marketing,optionnel,,
+190,Task,Positionnement et proposition de valeur,13,"En tant que membre de l'équipe, je veux une proposition de valeur claire, afin de convaincre le jury.
+
+Exigences : aucune (pilotage) | MoSCoW : C | Profil : marketing
+
+Critères d'acceptation :
+- Une phrase, trois arguments, une cible
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,2,,,,marketing,optionnel,,
+191,Task,Pitch de l'oral final,13,"En tant que membre de l'équipe, je veux un pitch de 2 minutes, afin d'ouvrir l'oral avec impact.
+
+Exigences : aucune (pilotage) | MoSCoW : C | Profil : marketing
+
+Critères d'acceptation :
+- Pitch répété et chronométré
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,3,,,,marketing,optionnel,,
+192,Task,Identité visuelle à partir du logo,13,"En tant que membre de l'équipe, je veux une charte simple (couleurs, typographie), afin d'avoir des supports cohérents.
+
+Exigences : aucune (pilotage) | MoSCoW : C | Profil : marketing
+
+Critères d'acceptation :
+- Charte appliquée aux supports
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,3,,,,marketing,optionnel,,
+193,Task,Présence sur les réseaux,13,"En tant que membre de l'équipe, je veux une page projet et quelques publications, afin de valoriser le projet.
+
+Exigences : aucune (pilotage) | MoSCoW : C | Profil : marketing
+
+Critères d'acceptation :
+- Page créée
+- Publications planifiées
+
+Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Low,2,,,,marketing,optionnel,,
