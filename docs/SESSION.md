@@ -14,14 +14,14 @@
 - Oral de validation Ydays 3 (16/12) préparé : `docs/oral/DataLift_oral_validation_16-12-2026.pptx`, régénérable via `uv run --with python-pptx python docs/oral/build_oral_ydays3.py`.
 
 ## Prochaine étape
-- Sprint 0 : squelette Python + Makefile (`make setup/test/lint`), puis récupérer les specs des 8 plateformes dans `mocks/specs/` et remplir les `SOURCE.md`.
+- Sprint 0 : squelette Python + Makefile (`make setup/test/lint`), puis récupérer les specs des 7 autres plateformes dans `mocks/specs/` et remplir les `SOURCE.md`.
+- Yooz : spec en place (`mocks/specs/yooz/`), compléter lien officiel, date et CGU dans `SOURCE.md`.
 
 ## Points ouverts
 - Décisions en attente : orchestration, technologie de l'interface, modèle IA.
 - Flux M1 validés : Yooz, Lucca, Progessi vers IFS (voir docs/CONTEXT.md).
-- Collection Postman Yooz rangée dans `docs/assets/` : à déplacer vers `mocks/specs/yooz/`.
-- Fichier verrou LibreOffice commité par erreur (`docs/oral/.~lock.*#`) : à supprimer et ignorer.
 - MCP Jira à reconfigurer sur le PC de bureau si besoin.
 
 ## Fichiers touchés récemment
 - `docs/ROADMAP.md`, `jira/*`, `docs/oral/*`, `docs/assets/*`
+- `mocks/specs/yooz/*`, `.gitignore`
