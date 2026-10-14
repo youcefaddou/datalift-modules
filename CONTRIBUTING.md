@@ -8,5 +8,3 @@
 6. Après fusion, supprime la branche.
 
 **Rappels :** aucune donnée réelle, aucun secret, ne modifie pas `contracts/` sans décision d'architecture.
-
-En contribuant, tu acceptes les termes de l'accord de contribution signé en début de projet.
