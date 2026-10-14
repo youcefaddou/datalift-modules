@@ -7,7 +7,7 @@
 
 ## Où on en est
 
-- Docs optimisées (VS Code, Docker, Jira), vue d'ensemble dans `docs/vulgarisation.md`. Aucun code applicatif.
+- Docs optimisées (VS Code, Docker, Jira). Vue d'ensemble à jour (ontologie, IA) dans `docs/vulgarisation.md`. Aucun code applicatif.
 - ADR-005 adoptée : ontologie (objets, liens, actions, `datalift_id` + `silver_identity_map`) en M1, avant les connecteurs.
 - ADR-006 adoptée : IA à 0 €, Qwen open source sur un Space Hugging Face de l'organisation Ynov (Qwen3.6-35B-A3B par défaut, Qwen3.8-27B à comparer), Qwen3.5-9B en local, entraînement sur les GPU Ynov, veille modèles à chaque sprint.
 - Jira à jour. Jira fait foi : le CSV de `jira/` n'est plus tenu à jour.
