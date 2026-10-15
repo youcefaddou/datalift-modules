@@ -1,28 +1,47 @@
 # Glossaire — DataLift
 
+## Concepts
+
 | Terme | Définition |
-|---|---|
+| --- | --- |
+| Action | Écriture vers un logiciel, déclarée sur un objet du modèle commun avec ses préconditions (règles métier) |
 | ADR | Architecture Decision Record : fiche qui trace une décision technique et sa raison |
 | API | Interface qui permet à un logiciel d'échanger des données avec un autre |
-| API simulée (mock) | Fausse API qui reproduit le comportement d'une vraie à partir de sa spécification |
+| API simulée (mock) | API qui reproduit le comportement d'une vraie à partir de sa spécification |
 | Bronze, silver, gold | Couches de données : brut, modèle commun contrôlé, vues prêtes à l'emploi |
+| Catalogue | Plateformes dont DataLift connaît les schémas |
 | Connecteur | Module qui lit ou écrit dans un logiciel via son API |
 | Contrat | Règle partagée entre modules : modèle commun, interface connecteur, définition de flux |
 | Correspondance (mapping) | Lien entre un champ source et un champ cible |
+| Données synthétiques | Données générées, sans lien avec des personnes ou entreprises réelles, avec des défauts injectés et documentés |
 | Flux | Échange de données défini entre une source et une cible |
 | Idempotence | Rejouer une opération donne le même résultat, sans doublon |
+| Identifiant DataLift (`datalift_id`) | Identifiant stable d'un objet, commun à tous les logiciels où il existe |
 | Lakehouse | Plateforme qui stocke et analyse de grands volumes de données |
-| Modèle commun (ontologie) | Représentation unique des objets métier, indépendante des logiciels |
-| Réconciliation | Vérification que la cible contient exactement ce qui a été envoyé |
-| Webhook | Notification envoyée par un logiciel quand un événement se produit |
-| Yooz | Logiciel de dématérialisation et de validation des factures fournisseurs |
-| IFS | ERP (progiciel de gestion intégré) |
-| Lucca | Suite de logiciels RH |
-| TeamTailor | Logiciel de recrutement |
-| Progessi | Logiciel de gestion d'affaires (projets, temps, facturation) |
-| eTemptation | Logiciel de gestion des temps et des activités |
-| Odoo (Notes de frais) | ERP open source (module `hr_expense`) utilisé pour les notes de frais, à la place de Notilus |
-| Sage | Logiciels de comptabilité et de paie |
+| Lien | Relation déclarée entre deux objets du modèle commun (une facture et sa commande) |
+| Lignage | Origine d'une donnée : `source_system`, `source_id`, `extracted_at` |
+| Modèle commun (ontologie) | Représentation unique des objets métier, de leurs liens et des actions possibles, indépendante des logiciels |
 | Outil maître | Logiciel qui fait référence pour un type de données (Lucca pour les collaborateurs) |
+| Question transverse | Question dont la réponse croise les données de plusieurs logiciels |
+| Quantification | Compression d'un modèle (par exemple en 4 bits) pour qu'il tienne dans moins de mémoire GPU |
 | Rapprochement | Vérification qu'une facture correspond à sa commande d'achat |
-| Catalogue | Plateformes dont DataLift connaît les schémas |
+| Réconciliation | Vérification que la cible contient exactement ce qui a été envoyé |
+| Score de confiance | Probabilité estimée par l'IA qu'une correspondance proposée soit correcte |
+| Space (Hugging Face) | Application hébergée sur Hugging Face. Ici, elle sert le modèle IA de DataLift (ADR-006) |
+| Story points | Estimation de l'effort d'un ticket Jira (repère : 1 point ≈ 1 h effective, 5 maximum) |
+| Veille modèles | Revue, à chaque sprint, des nouveaux modèles open source pour garder les meilleurs (ADR-006) |
+| Webhook | Notification envoyée par un logiciel quand un événement se produit |
+| ZeroGPU | GPU partagé de Hugging Face, attribué le temps d'un calcul. Quota de 40 min/jour par compte avec la licence Ynov |
+
+## Logiciels du catalogue
+
+| Logiciel | Domaine |
+| --- | --- |
+| Personio | Gestion des temps et des absences (remplace eTemptation, sans API publique) |
+| IFS | ERP (progiciel de gestion intégré), cible des flux M1 |
+| Lucca | Suite de logiciels RH, outil maître des collaborateurs |
+| Odoo (Notes de frais) | ERP open source, module `hr_expense` (remplace Notilus, sans API publique : ADR-007) |
+| Progessi | Gestion d'affaires (projets, temps, facturation) |
+| Sage | Comptabilité et banque (Embedded Accounting API) |
+| TeamTailor | Recrutement |
+| Yooz | Dématérialisation et validation des factures fournisseurs |

@@ -22,9 +22,11 @@
 
 ## Git
 
-- Branches : `feat/...`, `fix/...`, `docs/...`, `chore/...`, `test/...`.
-- Commits : Conventional Commits, par exemple `fix(connector-ifs): handle 429 rate limit`.
-- Pull request obligatoire, au moins une relecture, CI verte.
+- Deux branches : `develop` (travail courant, on y pousse directement) et `main` (stable).
+- `main` n'est mis à jour que par une PR depuis `develop`, avec la CI verte.
+- Commits : Conventional Commits, clé du ticket en fin de message, par exemple `fix(connector-ifs): handle 429 rate limit (DL-123)`.
+- CI verte obligatoire avant de pousser sur `develop` (`make lint` et `make test` en local).
+- `docs/SESSION.md` est mis à jour dans le même commit que le travail.
 
 ## Données
 
@@ -36,3 +38,4 @@
 
 - Chaque dossier de module a un README.md.
 - Toute décision technique structurante a une ADR dans `docs/decisions/`.
+- Rédaction en français, phrases courtes, termes techniques exacts, sans métaphore.

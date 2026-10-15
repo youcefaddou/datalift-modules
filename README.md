@@ -11,16 +11,16 @@ Ce dépôt contient les modules développés par l'équipe Ydays : connecteurs, 
 ## M1 en bref
 
 - **Catalogue** : Yooz, IFS, Lucca, Progessi, TeamTailor, Personio (remplace eTemptation), Odoo Notes de frais (remplace Notilus), Sage.
-- **Flux exécutés** (tous vers IFS) : factures Yooz, collaborateurs Lucca, feuilles de temps Progessi.
+- **Flux exécutés**, tous vers IFS : factures Yooz, collaborateurs Lucca, feuilles de temps Progessi.
 
-Détails : [docs/CONTEXT.md](docs/CONTEXT.md).
+Vue d'ensemble : [docs/vulgarisation.md](docs/vulgarisation.md). Détails : [docs/CONTEXT.md](docs/CONTEXT.md).
 
 ## Démarrage rapide
 
 Prérequis : `git`, `make` (`sudo apt install make`) et [uv](https://docs.astral.sh/uv/) (`curl -LsSf https://astral.sh/uv/install.sh | sh`). uv installe lui-même Python 3.12.
 
 ```bash
-git clone <url-du-depot>
+git clone https://github.com/youcefaddou/datalift-modules.git
 cd datalift-modules
 cp .env.example .env        # puis compléter
 make setup                  # installe les dépendances (uv sync)
@@ -33,33 +33,34 @@ make mocks                  # API simulées : IFS sur :8001, Progessi sur :8002
 
 ## Structure
 
-```
+```text
 datalift-modules/
 ├── AGENTS.md            # contexte pour les assistants IA (à lire en premier)
 ├── CLAUDE.md            # point d'entrée Claude Code
 ├── GEMINI.md            # point d'entrée Gemini
-├── .cursor/rules/       # règles Cursor
-├── contracts/           # modèle commun + interface connecteur (chef de projet)
+├── contracts/           # modèle commun + interface connecteur
 ├── mocks/               # API simulées
-│   └── specs/           # documentations officielles des API (OpenAPI, JSON, Postman)
+│   └── specs/           # specs officielles des API (OpenAPI, JSON, Postman)
 ├── synthetic_data/      # générateurs de données synthétiques
 ├── connectors/          # un dossier par logiciel
 ├── pipelines/           # bronze, silver, gold
 ├── ui/                  # interface de validation
-├── tests/
+├── tests/               # unit, contract, e2e
 ├── infra/               # Docker, Terraform, CI
+├── jira/                # backlog et scripts de génération
 └── docs/                # documentation du projet
 ```
 
 ## Documentation
 
+- [Vue d'ensemble](docs/vulgarisation.md)
 - [Contexte produit](docs/CONTEXT.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Feuille de route](docs/ROADMAP.md)
 - [Conventions](docs/CONVENTIONS.md)
 - [Politique des données](docs/DATA_POLICY.md)
 - [Glossaire](docs/GLOSSARY.md)
-- [Intégration d'un nouveau membre](docs/ONBOARDING.md)
+- [Arrivée d'un nouveau membre](docs/ONBOARDING.md)
 - [Décisions d'architecture](docs/decisions/)
 
 ## Contribuer

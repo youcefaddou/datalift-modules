@@ -1,4 +1,4 @@
-# ADR-006 — Odoo Notes de frais remplace Notilus
+# ADR-007 — Odoo Notes de frais remplace Notilus
 
 - **Statut :** adoptée
 - **Date :** 2026-10-15
@@ -24,4 +24,4 @@ Option 3 : Odoo Notes de frais remplace Notilus dans le catalogue, et le flux M2
 - À faire : service Odoo dans le `docker compose` des mocks, puis le script qui charge les données fictives.
 - À faire valider par FORTIL si Notilus venait d'un besoin client.
 - À surveiller : la version d'Odoo (JSON-2 à partir de 19 ; XML-RPC et JSON-RPC retirés en Odoo 22).
-- La numérotation ADR-005 est réservée à l'ADR « ontologie » (DL-112).
+- ADR-005 (ontologie) et ADR-006 (modèle IA) existent déjà.

@@ -1,11 +1,12 @@
 # Source de la spécification
 
 - Éditeur : Yooz
-- Format : collection Postman v2.1 (`yooz_rising_public_api.postman_collection.json`, « Yooz Rising Public API », 222 requêtes, préfixe `yooz/v2/api`, OAuth2)
+- Format : collection Postman v2.1 (`yooz_public_api.postman_collection.json`, « Yooz Rising Public API », 222 requêtes, préfixe `yooz/v2/api`)
+- Authentification : OAuth2 (Keycloak, realm `yooz`, grant password)
 - Lien vers la documentation officielle : [à compléter] (collection fournie par Youcef Addou)
-- Date de récupération : 2026-10-14
+- Date de récupération : [à compléter, ajoutée au dépôt le 2026-10-14]
 - Conditions d'utilisation vérifiées : [à vérifier]
-- Jetons et identifiants retirés de la collection : oui, vérifié le 2026-10-15 (auth OAuth2 avec seulement l'URL du jeton et le type de grant, aucun jeton, JWT ni email en clair)
+- Jetons et identifiants retirés de la collection : oui (vérifié les 2026-10-14 et 2026-10-15 : uniquement des valeurs fictives `<token>`, `<string>`, aucun JWT ni email en clair)
 
 ## Périmètre utile (flux 1 : factures fournisseurs vers IFS)
 

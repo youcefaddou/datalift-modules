@@ -2,9 +2,9 @@
 
 <!-- Une ou deux phrases -->
 
-## Ticket lié
+## Ticket Jira
 
-Closes #
+DL-
 
 ## Comment tester
 
@@ -13,8 +13,8 @@ Closes #
 
 ## Checklist
 
-- [ ] ruff et pytest passent en local
-- [ ] tests ajoutés ou mis à jour
-- [ ] documentation mise à jour si nécessaire
-- [ ] aucune donnée réelle, aucun secret
-- [ ] `contracts/` non modifié (ou ADR associé)
+- [ ] `make lint` et `make test` passent en local
+- [ ] Tests ajoutés ou mis à jour
+- [ ] Documentation mise à jour si nécessaire
+- [ ] Aucune donnée réelle, aucun secret
+- [ ] `contracts/` non modifié (ou ADR associée)
