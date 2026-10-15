@@ -37,3 +37,6 @@ node_modules/
 
 # Specs internes non publiques (DATA_POLICY : hors dépôt)
 mocks/specs/progessi/progessi.json
+
+# Fichiers de verrou LibreOffice
+.~lock.*#
