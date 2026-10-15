@@ -1,0 +1,49 @@
+{
+  "profiles": [
+    {
+      "partyId": "10000", "firstName": "Alex", "lastName": "Fictif",
+      "emailAddress": {"infoString": "alex.fictif@exemple.invalid"},
+      "telecomNumber": {"contactNumber": "0100000001"},
+      "primaryLocation": {"address1": "1 rue Imaginaire", "city": "Lyon", "postalCode": "69000", "countryGeoId": "FRA"},
+      "partyIdentifications": [{"partyIdentificationTypeId": "PAYROLL_ID", "idValue": "EMP-0001"}]
+    },
+    {
+      "partyId": "10001", "firstName": "Camille", "lastName": "Exemple",
+      "emailAddress": {"infoString": "camille.exemple@exemple.invalid"},
+      "telecomNumber": {"contactNumber": "0100000002"},
+      "primaryLocation": {"address1": "2 avenue Fictive", "city": "Paris", "postalCode": "75000", "countryGeoId": "FRA"},
+      "partyIdentifications": [{"partyIdentificationTypeId": "PAYROLL_ID", "idValue": "EMP-0002"}]
+    },
+    {
+      "partyId": "10002", "firstName": "Dominique", "lastName": "Test",
+      "emailAddress": {"infoString": "dominique.test@exemple.invalid"},
+      "telecomNumber": {"contactNumber": "0100000003"},
+      "primaryLocation": {"address1": "3 place Inventée", "city": "Lille", "postalCode": "59000", "countryGeoId": "FRA"},
+      "partyIdentifications": [{"partyIdentificationTypeId": "PAYROLL_ID", "idValue": "EMP-0003"}]
+    }
+  ],
+  "projects": [
+    {"workEffortId": "WE-1000", "workEffortTypeId": "PROJECT", "workEffortParentId": null, "workEffortName": "IFS-Client-A", "reference": "PRJ-0001", "currentStatusId": "PRJ_ACTIVE", "partyAssignments": []},
+    {"workEffortId": "WE-1001", "workEffortTypeId": "PROJECT", "workEffortParentId": "WE-1000", "workEffortName": "Odoo", "reference": "PRJ-0001-ODO", "currentStatusId": "PRJ_ACTIVE",
+     "partyAssignments": [
+       {"partyId": "10000", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-09-01T00:00:00Z", "thruDate": null},
+       {"partyId": "10002", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-10-01T00:00:00Z", "thruDate": null}
+     ]},
+    {"workEffortId": "WE-2000", "workEffortTypeId": "PROJECT", "workEffortParentId": null, "workEffortName": "Lucca-Client-B", "reference": "PRJ-0002", "currentStatusId": "PRJ_ACTIVE", "partyAssignments": []},
+    {"workEffortId": "WE-2001", "workEffortTypeId": "PROJECT", "workEffortParentId": "WE-2000", "workEffortName": "Migration", "reference": "PRJ-0002-MIG", "currentStatusId": "PRJ_ACTIVE",
+     "partyAssignments": [
+       {"partyId": "10000", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-09-01T00:00:00Z", "thruDate": null},
+       {"partyId": "10001", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-09-01T00:00:00Z", "thruDate": null}
+     ]}
+  ],
+  "timesheets": [
+    {"timesheetId": "TSH-1000", "partyId": "10000", "year": 2026, "month": 10, "statusId": "TIMESHEET_APPROVED",
+     "lines": [{"workEffortId": "WE-1001", "days": [1, 2, 5, 6, 7, 8, 9]}, {"workEffortId": "WE-2001", "days": [12, 13, 14]}]},
+    {"timesheetId": "TSH-1001", "partyId": "10001", "year": 2026, "month": 10, "statusId": "TIMESHEET_APPROVED",
+     "lines": [{"workEffortId": "WE-2001", "days": [1, 2, 5, 6]}]},
+    {"timesheetId": "TSH-1002", "partyId": "10002", "year": 2026, "month": 10, "statusId": "TIMESHEET_APPROVED",
+     "lines": [{"workEffortId": "WE-1001", "days": [5, 6]}]},
+    {"timesheetId": "TSH-1003", "partyId": "10001", "year": 2026, "month": 9, "statusId": "TIMESHEET_COMPLETED",
+     "lines": [{"workEffortId": "WE-2001", "days": [21, 22, 23]}]}
+  ]
+}

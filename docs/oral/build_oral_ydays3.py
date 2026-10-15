@@ -157,7 +157,7 @@ text(s, 0.95, 5.05, 11.4, 1.3,
 s = content_slide("Périmètre M1 : 8 plateformes, 3 flux exécutés")
 text(s, 0.6, 1.5, 5.6, 0.4, "Catalogue", size=18, bold=True, color=INK2)
 plats = [("Yooz", "Factures"), ("IFS", "ERP"), ("Lucca", "SIRH"), ("Progessi", "Gestion d'affaires"),
-         ("TeamTailor", "Recrutement"), ("eTemptation", "Temps"), ("Notilus", "Notes de frais"), ("Sage", "Comptabilité")]
+         ("TeamTailor", "Recrutement"), ("Personio", "Temps"), ("Odoo", "Notes de frais"), ("Sage", "Comptabilité")]
 for i, (n, d) in enumerate(plats):
     x, y = 0.6 + (i % 2) * 2.85, 2.0 + (i // 2) * 1.12
     key = n in ("Yooz", "IFS", "Lucca", "Progessi")
@@ -180,7 +180,7 @@ for i, (n, h, d, prio, c) in enumerate(flux):
 s = content_slide("Vision sur 2 ans : prouver, puis étendre")
 phases = [("2026-2027", "Prouver", ["Catalogue des 8 plateformes", "3 flux exécutés de bout en bout vers IFS",
                                           "Validation humaine, réconciliation, supervision", "Démo complète à l'oral final"], INDIGO),
-          ("2027-2028", "Étendre", ["Nouveaux flux : TeamTailor → Lucca, Notilus → IFS, eTemptation → Sage",
+          ("2027-2028", "Étendre", ["Nouveaux flux : TeamTailor → Lucca, Odoo → IFS, un flux vers Sage",
                                           "Modèle IA spécialisé pour les correspondances", "Socle analytique et tableau de bord avancé",
                                           "Assistant IA pour interroger les données"], BLUE)]
 for i, (when, verb, items, c) in enumerate(phases):

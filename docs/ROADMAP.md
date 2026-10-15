@@ -25,7 +25,7 @@ Les livrables suivent les objectifs officiels des sessions Ydays : c'est sur eux
 ## M2 (2027-2028)
 
 - Exploitation de l'ontologie : questions libres, agents qui repèrent une anomalie et proposent une action validée par un humain, applications métier.
-- Flux exécutés supplémentaires : TeamTailor vers Lucca, Notilus vers IFS, eTemptation vers Sage.
+- Flux exécutés supplémentaires : TeamTailor vers Lucca, Odoo vers IFS (notes de frais), un flux vers Sage (à redéfinir).
 - Modèle IA spécialisé pour la correspondance de champs.
 - Socle analytique et tableau de bord avancé.
 - Interface v2.

@@ -1,0 +1,179 @@
+{
+  "ProjectManagementHandling/ProjectSet": [
+    {
+      "ProjectId": "PRJ-0001",
+      "Company": "DL01",
+      "Name": "Projet fictif Alpha",
+      "State": "Active"
+    },
+    {
+      "ProjectId": "PRJ-0002",
+      "Company": "DL01",
+      "Name": "Projet fictif Beta",
+      "State": "Active"
+    },
+    {
+      "ProjectId": "PRJ-0003",
+      "Company": "DL02",
+      "Name": "Projet fictif Gamma",
+      "State": "Closed"
+    }
+  ],
+  "CustomerHandling/CustomerInfoSet": [
+    {
+      "CustomerId": "1000",
+      "Name": "Client Fictif Un",
+      "CreationDate": "2025-06-02",
+      "Country": "FR",
+      "CountryCode": "FR",
+      "DefaultLanguage": "fr",
+      "PartyType": "Customer",
+      "DefaultDomain": true,
+      "CustomerCategory": "Customer",
+      "OneTime": false,
+      "B2bCustomer": true,
+      "ValidDataProcessingPurpose": false,
+      "IdentifierRefValidation": "None",
+      "AssociationNo": null,
+      "Party": null,
+      "CorporateForm": null
+    }
+  ],
+  "SuppliersHandling/SupplierInfoGeneralSet": [
+    {
+      "SupplierId": "SUP-0001",
+      "Name": "Fournisseur Fictif Un",
+      "Country": "FR",
+      "DefaultLanguage": "fr"
+    },
+    {
+      "SupplierId": "SUP-0002",
+      "Name": "Fournisseur Fictif Deux",
+      "Country": "FR",
+      "DefaultLanguage": "fr"
+    }
+  ],
+  "PurchaseOrderHandling/PurchaseOrderSet": [
+    {
+      "OrderNo": "PO-0001",
+      "VendorNo": "SUP-0001",
+      "OrderDate": "2026-09-15",
+      "Objstate": "Released",
+      "Contract": "DL01",
+      "BuyerCode": "BUY-01",
+      "AuthorizeCode": "AUT-01",
+      "CurrencyCode": "EUR",
+      "Company": "DL01"
+    },
+    {
+      "OrderNo": "PO-0002",
+      "VendorNo": "SUP-0002",
+      "OrderDate": "2026-09-20",
+      "Objstate": "Planned",
+      "Contract": "DL01",
+      "BuyerCode": "BUY-01",
+      "AuthorizeCode": "AUT-01",
+      "CurrencyCode": "EUR",
+      "Company": "DL01"
+    }
+  ],
+  "PurchaseOrderHandling/PurchaseOrderLineNopartSet": [
+    {
+      "OrderNo": "PO-0001",
+      "LineNo": "1",
+      "ReleaseNo": "1",
+      "Description": "Prestation fictive A",
+      "BuyQtyDue": 1,
+      "BuyUnitMeas": "pcs",
+      "BuyUnitPrice": 600.0,
+      "NetAmtCurr": 600.0,
+      "GrossAmtCurr": 720.0,
+      "CurrencyCode": "EUR",
+      "Objstate": "Received",
+      "Contract": "DL01",
+      "VendorNo": "SUP-0001",
+      "WantedDeliveryDate": "2026-09-30",
+      "PlannedReceiptDate": "2026-09-30",
+      "ProjectId": "PRJ-0001"
+    },
+    {
+      "OrderNo": "PO-0001",
+      "LineNo": "2",
+      "ReleaseNo": "1",
+      "Description": "Prestation fictive B",
+      "BuyQtyDue": 1,
+      "BuyUnitMeas": "pcs",
+      "BuyUnitPrice": 400.0,
+      "NetAmtCurr": 400.0,
+      "GrossAmtCurr": 480.0,
+      "CurrencyCode": "EUR",
+      "Objstate": "Received",
+      "Contract": "DL01",
+      "VendorNo": "SUP-0001",
+      "WantedDeliveryDate": "2026-09-30",
+      "PlannedReceiptDate": "2026-09-30",
+      "ProjectId": "PRJ-0001"
+    }
+  ],
+  "ManualSupplierInvoiceHandling/ManSuppInvoiceSet": [
+    {
+      "Company": "DL01",
+      "InvoiceId": 1001,
+      "Identity": "SUP-0001",
+      "PartyType": "Supplier",
+      "SeriesId": "SI",
+      "InvoiceNo": "FAC-FICT-0001",
+      "InvoiceType": "SUPPINV",
+      "InvoiceDate": "2026-10-01",
+      "DueDate": "2026-10-31",
+      "PayTermId": "30",
+      "Currency": "EUR",
+      "NetCurrAmount": 1000.0,
+      "VatCurrAmount": 200.0,
+      "GrossCurrAmount": 1200.0,
+      "ManSuppInvoiceItems": [
+        {
+          "ItemId": 1,
+          "Description": "Prestation fictive A",
+          "NetCurrAmount": 600.0,
+          "VatCode": "TVA20"
+        },
+        {
+          "ItemId": 2,
+          "Description": "Prestation fictive B",
+          "NetCurrAmount": 400.0,
+          "VatCode": "TVA20"
+        }
+      ],
+      "Objstate": "PrelPosted"
+    }
+  ],
+  "PersonHandling/PersonInfoSet": [
+    {
+      "PersonId": "PERS-0001",
+      "Name": "Alex Fictif",
+      "FirstName": "Alex",
+      "LastName": "Fictif"
+    },
+    {
+      "PersonId": "PERS-0002",
+      "Name": "Camille Exemple",
+      "FirstName": "Camille",
+      "LastName": "Exemple"
+    }
+  ],
+  "EmployeesHandling/CompanyPersonSet": [
+    {
+      "CompanyId": "DL01",
+      "EmpNo": "EMP-0001",
+      "PersonId": "PERS-0001",
+      "DateOfEmployment": "2025-01-06"
+    },
+    {
+      "CompanyId": "DL01",
+      "EmpNo": "EMP-0002",
+      "PersonId": "PERS-0002",
+      "DateOfEmployment": "2025-03-03"
+    }
+  ]
+}
