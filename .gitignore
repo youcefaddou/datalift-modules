@@ -34,3 +34,6 @@ node_modules/
 .vscode/
 .idea/
 .DS_Store
+
+# Specs internes non publiques (DATA_POLICY : hors dépôt)
+mocks/specs/progessi/progessi.json
