@@ -34,7 +34,7 @@ La migration d'un logiciel à un autre est un cas particulier : un flux exécut�
 | Progessi | Gestion d'affaires | Source du flux 3 (feuilles de temps) |
 | TeamTailor | Recrutement | Catalogue (flux exécuté en M2) |
 | Personio | Gestion des temps et absences (remplace eTemptation, sans doc publique) | Catalogue |
-| Notilus | Notes de frais | Catalogue |
+| Odoo (Notes de frais) | Notes de frais (remplace Notilus, sans API publique) | Catalogue |
 | Sage | Comptabilité, banque (Embedded Accounting API) | Catalogue |
 
 ## Les 3 flux exécutés
@@ -56,7 +56,7 @@ Les champs exacts sont à établir à partir des specs de `mocks/specs/`. **Ne j
 
 ## Hors M1
 
-Données réelles, exécution sans validation humaine, écriture vers une autre cible qu'IFS. Flux prévus en M2 : TeamTailor vers Lucca, Notilus vers IFS, un flux vers Sage (à redéfinir : Sage Embedded Accounting ne couvre pas la paie).
+Données réelles, exécution sans validation humaine, écriture vers une autre cible qu'IFS. Flux prévus en M2 : TeamTailor vers Lucca, Odoo vers IFS (notes de frais), un flux vers Sage (à redéfinir : Sage Embedded Accounting ne couvre pas la paie).
 
 ## Positionnement
 

@@ -24,7 +24,7 @@
   ],
   "projects": [
     {"workEffortId": "WE-1000", "workEffortTypeId": "PROJECT", "workEffortParentId": null, "workEffortName": "IFS-Client-A", "reference": "PRJ-0001", "currentStatusId": "PRJ_ACTIVE", "partyAssignments": []},
-    {"workEffortId": "WE-1001", "workEffortTypeId": "PROJECT", "workEffortParentId": "WE-1000", "workEffortName": "Notilus", "reference": "PRJ-0001-NOT", "currentStatusId": "PRJ_ACTIVE",
+    {"workEffortId": "WE-1001", "workEffortTypeId": "PROJECT", "workEffortParentId": "WE-1000", "workEffortName": "Odoo", "reference": "PRJ-0001-ODO", "currentStatusId": "PRJ_ACTIVE",
      "partyAssignments": [
        {"partyId": "10000", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-09-01T00:00:00Z", "thruDate": null},
        {"partyId": "10002", "roleTypeId": "PROJECT_TEAM", "fromDate": "2026-10-01T00:00:00Z", "thruDate": null}
