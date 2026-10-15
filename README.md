@@ -10,7 +10,7 @@ Ce dépôt contient les modules développés par l'équipe Ydays : connecteurs, 
 
 ## M1 en bref
 
-- **Catalogue** : Yooz, IFS, Lucca, Progessi, TeamTailor, Personio (remplace eTemptation), Notilus, Sage.
+- **Catalogue** : Yooz, IFS, Lucca, Progessi, TeamTailor, Personio (remplace eTemptation), Odoo Notes de frais (remplace Notilus), Sage.
 - **Flux exécutés** (tous vers IFS) : factures Yooz, collaborateurs Lucca, feuilles de temps Progessi.
 
 Détails : [docs/CONTEXT.md](docs/CONTEXT.md).

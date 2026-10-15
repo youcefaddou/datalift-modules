@@ -21,7 +21,7 @@
 | TeamTailor | Logiciel de recrutement |
 | Progessi | Logiciel de gestion d'affaires (projets, temps, facturation) |
 | eTemptation | Logiciel de gestion des temps et des activités |
-| Notilus | Logiciel de gestion des notes de frais |
+| Odoo (Notes de frais) | ERP open source (module `hr_expense`) utilisé pour les notes de frais, à la place de Notilus |
 | Sage | Logiciels de comptabilité et de paie |
 | Outil maître | Logiciel qui fait référence pour un type de données (Lucca pour les collaborateurs) |
 | Rapprochement | Vérification qu'une facture correspond à sa commande d'achat |

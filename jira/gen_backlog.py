@@ -49,7 +49,7 @@ S = [
 ] + [
     (2, 0, "Story", f"Récupérer la spécification d'API {p} et remplir SOURCE.md", I, f"la spécification officielle de l'API {p} dans mocks/specs/{p.lower()}/", "que l'IA et les API simulées s'appuient sur des sources vérifiées", ["EF-10"], "M" if p in ("Yooz", "IFS", "Lucca", "Progessi") else "S", 2, "ia-data",
      [f"Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/{p.lower()}/", "SOURCE.md rempli : URL, date, version, licence, qualité de la spec", "Aucune donnée réelle dans les exemples"], ["ydays2-autonome"])
-    for p in ("Yooz", "IFS", "Lucca", "Progessi", "TeamTailor", "eTemptation", "Notilus", "Sage")
+    for p in ("Yooz", "IFS", "Lucca", "Progessi", "TeamTailor", "eTemptation", "Odoo", "Sage")
 ] + [
     # ---------- Sprint 1 : 26/11 -> 16/12 (Ydays 3, oral) ----------
     (5, 1, "Story", "Définir le modèle commun v1 dans contracts/", I, "un schéma unique pour fournisseurs, commandes, factures, collaborateurs, projets et temps", "que tous les connecteurs parlent la même langue", ["EF-12"], "M", 5, "youcef",

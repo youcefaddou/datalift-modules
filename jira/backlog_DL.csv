@@ -150,12 +150,12 @@ Critères d'acceptation :
 - Aucune donnée réelle dans les exemples
 
 Définition de terminé : code relu en PR, tests verts en CI, ticket DL cité dans la branche et les commits.",Medium,2,DL Sprint 0,,,ia-data,EF-10,ydays2-autonome,
-114,Story,Récupérer la spécification d'API Notilus et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Notilus dans mocks/specs/notilus/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
+114,Story,Récupérer la spécification d'API Odoo (notes de frais) et remplir SOURCE.md,2,"En tant qu'intégrateur, je veux la spécification officielle de l'API Odoo (notes de frais) dans mocks/specs/odoo/, afin que l'IA et les API simulées s'appuient sur des sources vérifiées.
 
 Exigences : EF-10 | MoSCoW : S | Profil : ia-data
 
 Critères d'acceptation :
-- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/notilus/
+- Spec (OpenAPI, JSON ou collection Postman) déposée dans mocks/specs/odoo/
 - SOURCE.md rempli : URL, date, version, licence, qualité de la spec
 - Aucune donnée réelle dans les exemples
 
