@@ -1,6 +1,6 @@
 # Source de la spécification
 
-- Éditeur : Odoo S.A. (Odoo Community, module Notes de frais `hr_expense`) ; remplace Notilus, voir `docs/decisions/ADR-006-odoo-remplace-notilus.md`
+- Éditeur : Odoo S.A. (Odoo Community, module Notes de frais `hr_expense`) ; remplace Notilus, voir `docs/decisions/ADR-007-odoo-remplace-notilus.md`
 - Format : API externe officielle d'Odoo, documentée publiquement (pas de fichier OpenAPI : Odoo génère une documentation dynamique par instance)
 - Lien vers la documentation officielle : https://www.odoo.com/documentation/19.0/developer/reference/external_api.html ; modèle : https://github.com/odoo/odoo/tree/master/addons/hr_expense (licence LGPL-3)
 - Date de récupération : 2026-10-15

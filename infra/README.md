@@ -1,3 +1,3 @@
 # infra
 
-Docker Compose/Podman (local),Kubernetes, Terraform/OpenTofu (cloud), workflows GitHub Actions.
+Docker Compose (postes locaux et VPS Hetzner), Terraform, workflows GitHub Actions. Choix d'hébergement : voir `docs/decisions/`.

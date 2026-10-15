@@ -13,13 +13,14 @@ Plateforme d'intégration de données assistée par IA, inspirée de Palantir :
 3. **Demander** en langage naturel : "envoie les factures validées de Yooz vers IFS".
 4. **Valider** : l'IA propose le flux et les correspondances, un humain valide.
 5. **Exécuter et superviser** : exécution, contrôles, réconciliation, alertes.
+6. **Interroger** : poser des questions qui croisent plusieurs logiciels, grâce aux liens entre objets du modèle commun.
 
 La migration d'un logiciel à un autre est un cas particulier : un flux exécuté une seule fois.
 
 ## Les 3 niveaux du M1
 
 | Niveau | Contenu | Plateformes |
-|---|---|---|
+| --- | --- | --- |
 | 1. Catalogue | Specs d'API chargées, l'IA propose des correspondances entre n'importe lesquelles | Les 8 |
 | 2. API simulées | Générées depuis les specs | Les 8, selon la qualité des specs |
 | 3. Flux exécutés | Lecture, modèle commun, validation, écriture, réconciliation, supervision | 3 flux, tous vers IFS |
@@ -27,7 +28,7 @@ La migration d'un logiciel à un autre est un cas particulier : un flux exécut�
 ## Catalogue des plateformes
 
 | Plateforme | Domaine | Rôle en M1 |
-|---|---|---|
+| --- | --- | --- |
 | Yooz | Factures fournisseurs | Source du flux 1 |
 | IFS | ERP | Cible des 3 flux |
 | Lucca | SIRH | Source du flux 2, outil maître des collaborateurs |
@@ -40,7 +41,7 @@ La migration d'un logiciel à un autre est un cas particulier : un flux exécut�
 ## Les 3 flux exécutés
 
 | Flux | Objet | Priorité | Dépendance |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Flux 1 : Yooz vers IFS | Factures fournisseurs rapprochées des commandes d'achat | Indispensable | Fournisseurs et commandes présents dans IFS |
 | Flux 2 : Lucca vers IFS | Collaborateurs : créations, modifications, départs | Indispensable | Aucune |
 | Flux 3 : Progessi vers IFS | Feuilles de temps validées | Important | Flux 2 : le collaborateur doit exister dans IFS |

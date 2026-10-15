@@ -3,13 +3,16 @@
 @./AGENTS.md
 @./docs/SESSION.md
 
-## Démarrage de session
-Résume en 3 lignes l'état indiqué dans docs/SESSION.md, puis demande l'objectif si je ne l'ai pas donné.
+Si ton outil ne prend pas en charge les imports ci-dessus, ouvre `AGENTS.md` et `docs/SESSION.md` manuellement.
 
-## Fin de session
-Quand je dis "handoff" : réécris docs/SESSION.md (40 lignes max : date, phase, où on en est, prochaine étape, points ouverts, fichiers touchés) et propose un message de commit.
+## Démarrage de session
+
+Résume `docs/SESSION.md` en 3 lignes, puis demande l'objectif s'il n'est pas donné.
 
 ## Specs d'API
+
 Ne charge jamais une spec entière : cherche uniquement la section utile.
 
-Si les imports ci-dessus ne sont pas pris en charge par ton outil, ouvre AGENTS.md et docs/SESSION.md manuellement.
+## Fin de session
+
+Quand je dis "handoff" : réécris `docs/SESSION.md` (40 lignes max : date, phase, où on en est, prochaine étape, points ouverts, fichiers touchés) et propose un message de commit. `SESSION.md` part dans le même commit que le travail.
