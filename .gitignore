@@ -35,6 +35,9 @@ node_modules/
 .idea/
 .DS_Store
 
+# Specs internes non publiques (DATA_POLICY : hors dépôt)
+mocks/specs/progessi/progessi.json
+
 # Fichiers verrou LibreOffice / Office
 .~lock.*#
 ~$*

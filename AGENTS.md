@@ -42,7 +42,7 @@ Choix encore ouverts : voir `docs/decisions/`. Ne tranche pas seul un choix ouve
 5. Idempotence : rejouer un flux ne crée jamais de doublon.
 6. Lignage : `source_system`, `source_id`, `extracted_at` sur chaque donnée silver.
 7. Pas de code sans test.
-8. Une tâche = un ticket Jira = une branche = une PR.
+8. On travaille sur `develop` ; `main` ne reçoit que des PR depuis `develop`. Chaque commit cite son ticket Jira.
 
 ## Conventions (résumé)
 

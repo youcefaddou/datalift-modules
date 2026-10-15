@@ -37,11 +37,11 @@
 
 | Logiciel | Domaine |
 | --- | --- |
-| eTemptation | Gestion des temps et des activités |
+| Personio | Gestion des temps et des absences (remplace eTemptation, sans API publique) |
 | IFS | ERP (progiciel de gestion intégré), cible des flux M1 |
 | Lucca | Suite de logiciels RH, outil maître des collaborateurs |
-| Notilus | Notes de frais |
+| Odoo (Notes de frais) | ERP open source, module `hr_expense` (remplace Notilus, sans API publique : ADR-007) |
 | Progessi | Gestion d'affaires (projets, temps, facturation) |
-| Sage | Comptabilité et paie |
+| Sage | Comptabilité et banque (Embedded Accounting API) |
 | TeamTailor | Recrutement |
 | Yooz | Dématérialisation et validation des factures fournisseurs |

@@ -22,10 +22,10 @@
 
 ## Git
 
-- Une tâche = un ticket Jira = une branche = une PR.
-- Branches avec la clé du ticket : `feat/DL-123-...`, `fix/...`, `docs/...`, `chore/...`, `test/...`.
+- Deux branches : `develop` (travail courant, on y pousse directement) et `main` (stable).
+- `main` n'est mis à jour que par une PR depuis `develop`, avec la CI verte.
 - Commits : Conventional Commits, clé du ticket en fin de message, par exemple `fix(connector-ifs): handle 429 rate limit (DL-123)`.
-- Pull request obligatoire, au moins une relecture, CI verte.
+- CI verte obligatoire avant de pousser sur `develop` (`make lint` et `make test` en local).
 - `docs/SESSION.md` est mis à jour dans le même commit que le travail.
 
 ## Données
