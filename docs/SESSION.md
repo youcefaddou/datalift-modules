@@ -10,13 +10,13 @@
 - ADR adoptées : 005 ontologie (`datalift_id`, `silver_identity_map`), 006 modèle IA (Qwen sur Hugging Face, 0 €), 007 Odoo remplace Notilus.
 - Specs avec `SOURCE.md` : Yooz, Lucca, Teamtailor, Personio (remplace eTemptation), Sage Embedded Accounting, Odoo ; IFS et Progessi reconstituées (sources citées).
 - Mocks FastAPI : `mocks/ifs/` (OData, OAuth2, format et erreurs IFS) et `mocks/progessi/` (modèle OFBiz). 23 tests verts.
-- `Makefile` + CI GitHub Actions (push sur `main` et `develop`, PR).
-- Jira fait foi (le CSV de `jira/` n'est plus tenu). DL-26 à DL-33 terminés ; DL-18, DL-24, DL-48, DL-93 en cours.
+- `Makefile` + CI GitHub Actions verte (push sur `main` et `develop`, PR). `main` protégée (PR + check `checks` obligatoires), branche par défaut : `develop`.
+- Jira fait foi (le CSV de `jira/` n'est plus tenu). Terminés : DL-18, DL-24, DL-26 à DL-33. En cours : DL-48 (IFS, manque la projection des temps), DL-93 (Progessi, manque les congés).
 
 ## Prochaine étape
 
-- Vérifier la CI verte sur `develop`, puis protéger `main` (check `checks` obligatoire) et clore DL-18 / DL-24.
-- Mock Yooz (DL-46), puis Odoo Community dans un `docker compose` des mocks.
+- DL-23 : installer son environnement et lancer `make setup` (décidé par Youcef pour la prochaine session).
+- Ensuite : mock Yooz (DL-46) depuis `mocks/specs/yooz/`, puis Odoo Community dans un `docker compose` des mocks.
 
 ## Points ouverts
 
@@ -29,9 +29,6 @@
 
 ## Fichiers touchés récemment
 
-- `Makefile`, `.github/workflows/ci.yml`, `pyproject.toml`, `uv.lock`, `.gitignore`, `README.md`
-- `mocks/ifs/`, `mocks/progessi/`, `tests/unit/mocks/`
-- `mocks/specs/*/SOURCE.md` et specs ; `etemptation/` → `personio/`, `notilus/` → `odoo/`
-- `docs/decisions/ADR-007-odoo-remplace-notilus.md`, `CONTEXT.md`, `ROADMAP.md`, `GLOSSARY.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`, `AGENTS.md`
+- `docs/SESSION.md` (cette session : clôture de DL-24 dans Jira, sans changement de code)
 
 Tests : `make test` (ou `uv run pytest -q`)
