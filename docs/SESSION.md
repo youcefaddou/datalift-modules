@@ -2,7 +2,7 @@
 
 > Fichier court (40 lignes max), réécrit à chaque `/handoff`. Ne pas y mettre d'historique.
 
-**Mis à jour :** 2026-10-15
+**Mis à jour :** 2026-10-23
 **Phase :** Sprint 0 (14/10 → 25/11/2026). Branche de travail : `develop` (tirée de `main`, fusion vers `main` par PR).
 
 ## Où on en est
@@ -30,5 +30,7 @@
 ## Fichiers touchés récemment
 
 - `docs/SESSION.md` (cette session : clôture de DL-24 dans Jira, sans changement de code)
-
+- `compose.yaml` et `infra/README.md` : PostgreSQL local démarré en une commande depuis `.env`
 Tests : `make test` (ou `uv run pytest -q`)
+
+
