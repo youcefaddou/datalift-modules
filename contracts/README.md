@@ -95,3 +95,12 @@ uv run ruff format --check contracts tests/contract/contracts
 Les enregistrements sont bruts (noms de champs de l'API) : ils vont en bronze, et le passage au modèle commun se fait dans `pipelines/`. Les erreurs héritent de `ConnectorError` ; `retryable` indique si un nouvel essai peut réussir (`RateLimitError`, `SourceUnavailableError`).
 
 Chaque connecteur appelle `assert_connector_contract` (`contracts/connector_contract.py`) dans ses tests : santé, schéma, écriture, pagination, et absence de doublon quand on rejoue une écriture. Exemple avec un connecteur factice : `tests/contract/test_connector_interface.py`.
+
+## Ontologie : liens, actions, identités (DL-113, ADR-005)
+
+`contracts/v1/ontology.py` :
+
+- `LINKS` : les 6 liens (nom, objet source, objet cible, cardinalité, obligatoire, colonne de clé étrangère, champs des specs qui servent au rapprochement).
+- `ACTIONS` : `send_invoice_to_ifs`, `sync_employee_to_ifs` et `send_time_entry_to_ifs`. `action.failed(objet, contexte)` renvoie les préconditions non respectées, qui servent de motif pour mettre l'objet de côté. Le contexte (`ActionContext`) apporte ce que l'objet ne contient pas : statuts validés dans la source, montants des commandes, table d'identités.
+- `SILVER_IDENTITY_MAP_DDL` et `IdentityMap` : la table `silver_identity_map`. Un enregistrement source correspond à un seul `datalift_id`.
+- `FlowDefinition` : un flux référence une action connue, sur le bon type d'objet, et n'est exécutable qu'une fois `validated` (règle 4).
