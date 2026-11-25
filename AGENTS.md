@@ -26,7 +26,7 @@ Projet étudiant Ydays (Ynov), M1 puis M2. Chef de projet et architecte : Youcef
 ## Stack et outils
 
 - Python 3.12, Pydantic v2, httpx, FastAPI, pytest, ruff.
-- PostgreSQL, Microsoft Fabric (repli DuckDB).
+- PostgreSQL seul : bronze, silver et gold (vues `gold_`) dans une même base (ADR-010).
 - IA : LLM via OpenRouter (API compatible OpenAI, modèles gratuits + crédit unique d'environ 10 $), Ollama en local en option (ADR-008).
 - Docker, Terraform, GitHub Actions. Hébergement : VPS Hetzner CPX12, 2 Go, budget mémoire par service (ADR-009, `infra/docker-compose.yml`).
 - Poste de travail : VS Code, Docker Desktop. Suivi : Jira, projet DataLift (clé `DL`). Code : GitHub.
