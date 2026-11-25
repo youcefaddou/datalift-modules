@@ -1,0 +1,1100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataLift common contracts v1",
+  "version": "1.0.0",
+  "models": {
+    "Supplier": {
+      "additionalProperties": false,
+      "description": "Supplier master data. Keep only fields present in the checked-in source schema.",
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "SupplierId": {
+          "minLength": 1,
+          "source": "mocks/specs/ifs/SOURCE.md: SuppliersHandling/SupplierInfoGeneralSet; mocks/ifs/seed.json",
+          "title": "Supplierid",
+          "type": "string"
+        },
+        "Name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: SupplierInfoGeneralSet",
+          "title": "Name"
+        },
+        "Country": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: SupplierInfoGeneralSet",
+          "title": "Country"
+        },
+        "DefaultLanguage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: SupplierInfoGeneralSet",
+          "title": "Defaultlanguage"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "SupplierId"
+      ],
+      "title": "Supplier",
+      "type": "object"
+    },
+    "PurchaseOrder": {
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "OrderNo": {
+          "minLength": 1,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Orderno",
+          "type": "string"
+        },
+        "VendorNo": {
+          "minLength": 1,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Vendorno",
+          "type": "string"
+        },
+        "OrderDate": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Orderdate"
+        },
+        "Objstate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Objstate"
+        },
+        "Contract": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Contract"
+        },
+        "BuyerCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Buyercode"
+        },
+        "AuthorizeCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Authorizecode"
+        },
+        "CurrencyCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Currencycode"
+        },
+        "Company": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: PurchaseOrderHandling/PurchaseOrderSet",
+          "title": "Company"
+        },
+        "supplier_datalift_id": {
+          "description": "Relation purchase_order → supplier (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Supplier Datalift Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "OrderNo",
+        "VendorNo",
+        "supplier_datalift_id"
+      ],
+      "title": "PurchaseOrder",
+      "type": "object"
+    },
+    "SupplierInvoice": {
+      "$defs": {
+        "InvoiceLine": {
+          "additionalProperties": false,
+          "properties": {
+            "datalift_id": {
+              "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+              "minLength": 1,
+              "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+              "title": "Datalift Id",
+              "type": "string"
+            },
+            "source_system": {
+              "description": "Source software identifier.",
+              "minLength": 1,
+              "source": "docs/CONVENTIONS.md",
+              "title": "Source System",
+              "type": "string"
+            },
+            "source_id": {
+              "description": "Identifier of the record in its source software.",
+              "minLength": 1,
+              "source": "docs/CONVENTIONS.md",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "extracted_at": {
+              "description": "UTC timestamp of extraction (ISO 8601).",
+              "format": "date-time",
+              "source": "docs/CONVENTIONS.md",
+              "title": "Extracted At",
+              "type": "string"
+            },
+            "ItemId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+              "title": "Itemid"
+            },
+            "Description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+              "title": "Description"
+            },
+            "NetCurrAmount": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "source": "mocks/ifs/seed.json: ManSuppInvoiceItems; docs/CONVENTIONS.md (Decimal)",
+              "title": "Netcurramount"
+            },
+            "VatCode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+              "title": "Vatcode"
+            },
+            "supplier_invoice_datalift_id": {
+              "description": "Relation invoice_line → supplier_invoice (ADR-005).",
+              "minLength": 1,
+              "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+              "title": "Supplier Invoice Datalift Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "datalift_id",
+            "source_system",
+            "source_id",
+            "extracted_at",
+            "ItemId",
+            "supplier_invoice_datalift_id"
+          ],
+          "title": "InvoiceLine",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "Company": {
+          "minLength": 1,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Company",
+          "type": "string"
+        },
+        "InvoiceId": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "source": "mocks/specs/ifs/SOURCE.md: ManSuppInvoiceSet; mocks/ifs/seed.json",
+          "title": "Invoiceid"
+        },
+        "Identity": {
+          "minLength": 1,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Identity",
+          "type": "string"
+        },
+        "InvoiceNo": {
+          "minLength": 1,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Invoiceno",
+          "type": "string"
+        },
+        "InvoiceDate": {
+          "format": "date",
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Invoicedate",
+          "type": "string"
+        },
+        "Currency": {
+          "minLength": 1,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Currency",
+          "type": "string"
+        },
+        "DueDate": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet",
+          "title": "Duedate"
+        },
+        "NetCurrAmount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet; docs/CONVENTIONS.md (Decimal)",
+          "title": "Netcurramount"
+        },
+        "VatCurrAmount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet; docs/CONVENTIONS.md (Decimal)",
+          "title": "Vatcurramount"
+        },
+        "GrossCurrAmount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceSet; docs/CONVENTIONS.md (Decimal)",
+          "title": "Grosscurramount"
+        },
+        "Objstate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: ManSuppInvoiceSet; mocks/ifs/seed.json",
+          "title": "Objstate"
+        },
+        "supplier_datalift_id": {
+          "description": "Required relation invoice → supplier (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Supplier Datalift Id",
+          "type": "string"
+        },
+        "purchase_order_datalift_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional relation invoice → purchase order (ADR-005).",
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Purchase Order Datalift Id"
+        },
+        "lines": {
+          "description": "Invoice lines (1:N relation, ADR-005).",
+          "items": {
+            "$ref": "#/$defs/InvoiceLine"
+          },
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Lines",
+          "type": "array"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "Company",
+        "InvoiceId",
+        "Identity",
+        "InvoiceNo",
+        "InvoiceDate",
+        "Currency",
+        "supplier_datalift_id"
+      ],
+      "title": "SupplierInvoice",
+      "type": "object"
+    },
+    "InvoiceLine": {
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "ItemId": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+          "title": "Itemid"
+        },
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+          "title": "Description"
+        },
+        "NetCurrAmount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceItems; docs/CONVENTIONS.md (Decimal)",
+          "title": "Netcurramount"
+        },
+        "VatCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/ifs/seed.json: ManSuppInvoiceItems",
+          "title": "Vatcode"
+        },
+        "supplier_invoice_datalift_id": {
+          "description": "Relation invoice_line → supplier_invoice (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Supplier Invoice Datalift Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "ItemId",
+        "supplier_invoice_datalift_id"
+      ],
+      "title": "InvoiceLine",
+      "type": "object"
+    },
+    "Employee": {
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.id",
+          "title": "Id"
+        },
+        "remoteId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.remoteId",
+          "title": "Remoteid"
+        },
+        "employeeNumber": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.employeeNumber",
+          "title": "Employeenumber"
+        },
+        "givenName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.givenName; IFS PersonInfoSet.FirstName; OFBiz Person.firstName",
+          "title": "Givenname"
+        },
+        "familyName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.familyName; IFS PersonInfoSet.LastName; OFBiz Person.lastName",
+          "title": "Familyname"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.email",
+          "title": "Email"
+        },
+        "phoneNumber": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.phoneNumber",
+          "title": "Phonenumber"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/lucca/real_openapi_specs.json: employee.status",
+          "title": "Status"
+        },
+        "CompanyId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: EmployeesHandling/CompanyPersonSet",
+          "title": "Companyid"
+        },
+        "EmpNo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: EmployeesHandling/CompanyPersonSet",
+          "title": "Empno"
+        },
+        "PersonId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: EmployeesHandling/CompanyPersonSet",
+          "title": "Personid"
+        },
+        "DateOfEmployment": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/ifs/SOURCE.md: EmployeesHandling/CompanyPersonSet",
+          "title": "Dateofemployment"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at"
+      ],
+      "title": "Employee",
+      "type": "object"
+    },
+    "Project": {
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "workEffortId": {
+          "minLength": 1,
+          "source": "mocks/specs/progessi/SOURCE.md: WorkEffort",
+          "title": "Workeffortid",
+          "type": "string"
+        },
+        "workEffortTypeId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/progessi/SOURCE.md: WorkEffort",
+          "title": "Workefforttypeid"
+        },
+        "workEffortParentId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/progessi/SOURCE.md: WorkEffort",
+          "title": "Workeffortparentid"
+        },
+        "workEffortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/progessi/SOURCE.md: WorkEffort",
+          "title": "Workeffortname"
+        },
+        "currentStatusId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/progessi/SOURCE.md: WorkEffort",
+          "title": "Currentstatusid"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/progessi/seed.json: projects",
+          "title": "Reference"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "workEffortId"
+      ],
+      "title": "Project",
+      "type": "object"
+    },
+    "TimeEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "datalift_id": {
+          "description": "Stable DataLift identity; resolved through silver_identity_map (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Datalift Id",
+          "type": "string"
+        },
+        "source_system": {
+          "description": "Source software identifier.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source System",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "Identifier of the record in its source software.",
+          "minLength": 1,
+          "source": "docs/CONVENTIONS.md",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "extracted_at": {
+          "description": "UTC timestamp of extraction (ISO 8601).",
+          "format": "date-time",
+          "source": "docs/CONVENTIONS.md",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "timeEntryId": {
+          "minLength": 1,
+          "source": "mocks/specs/progessi/SOURCE.md: TimeEntry",
+          "title": "Timeentryid",
+          "type": "string"
+        },
+        "timesheetId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/progessi/app.py: expanded Timesheet/TimeEntry response",
+          "title": "Timesheetid"
+        },
+        "partyId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "source": "mocks/specs/progessi/SOURCE.md: Timesheet.partyId",
+          "title": "Partyid"
+        },
+        "workEffortId": {
+          "minLength": 1,
+          "source": "mocks/specs/progessi/SOURCE.md: TimeEntry",
+          "title": "Workeffortid",
+          "type": "string"
+        },
+        "fromDate": {
+          "format": "date-time",
+          "source": "mocks/specs/progessi/SOURCE.md: TimeEntry",
+          "title": "Fromdate",
+          "type": "string"
+        },
+        "thruDate": {
+          "format": "date-time",
+          "source": "mocks/specs/progessi/SOURCE.md: TimeEntry",
+          "title": "Thrudate",
+          "type": "string"
+        },
+        "hours": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "source": "mocks/specs/progessi/SOURCE.md: TimeEntry; docs/CONVENTIONS.md (decimal values)",
+          "title": "Hours"
+        },
+        "employee_datalift_id": {
+          "description": "Relation time entry → employee (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Employee Datalift Id",
+          "type": "string"
+        },
+        "project_datalift_id": {
+          "description": "Relation time entry → project (ADR-005).",
+          "minLength": 1,
+          "source": "docs/decisions/ADR-005-ontologie-liens-actions.md",
+          "title": "Project Datalift Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "datalift_id",
+        "source_system",
+        "source_id",
+        "extracted_at",
+        "timeEntryId",
+        "workEffortId",
+        "fromDate",
+        "thruDate",
+        "hours",
+        "employee_datalift_id",
+        "project_datalift_id"
+      ],
+      "title": "TimeEntry",
+      "type": "object"
+    }
+  }
+}
