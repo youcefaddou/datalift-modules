@@ -79,3 +79,19 @@ uv run pytest tests/contract/contracts -q
 uv run ruff check contracts tests/contract/contracts
 uv run ruff format --check contracts tests/contract/contracts
 ```
+
+## Interface connecteur (DL-36, ADR-004)
+
+`contracts/connector.py` définit la classe abstraite `Connector`, que chaque connecteur de `connectors/<logiciel>/` implémente :
+
+| Opération | Rôle |
+|---|---|
+| `read_page(object_type, cursor, page_size)` | Lit une page ; `next_cursor` vaut `None` sur la dernière |
+| `read(object_type)` | Lit tout, page après page (déjà implémentée à partir de `read_page`) |
+| `write(object_type, records)` | Écrit et renvoie les identifiants acceptés et rejetés ; doit être idempotente (règle 5) |
+| `describe_schema(object_type)` | Schéma JSON des enregistrements bruts de l'API |
+| `health_check()` | Vérifie que l'API répond avec les identifiants actuels |
+
+Les enregistrements sont bruts (noms de champs de l'API) : ils vont en bronze, et le passage au modèle commun se fait dans `pipelines/`. Les erreurs héritent de `ConnectorError` ; `retryable` indique si un nouvel essai peut réussir (`RateLimitError`, `SourceUnavailableError`).
+
+Chaque connecteur appelle `assert_connector_contract` (`contracts/connector_contract.py`) dans ses tests : santé, schéma, écriture, pagination, et absence de doublon quand on rejoue une écriture. Exemple avec un connecteur factice : `tests/contract/test_connector_interface.py`.
