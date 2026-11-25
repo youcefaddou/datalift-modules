@@ -10,18 +10,18 @@ Projet étudiant Ydays (Ynov), M1 puis M2. Chef de projet et architecte : Youcef
 
 ## Ce dépôt
 
-| Dossier | Contenu |
-| --- | --- |
-| `contracts/` | Modèle commun + interface connecteur. **Lecture seule sauf ADR.** |
-| `mocks/specs/` | Specs officielles des API, avec un `SOURCE.md` par logiciel (lourdes : voir règles de contexte) |
-| `mocks/` | API simulées générées depuis les specs |
-| `synthetic_data/` | Données synthétiques, défauts injectés documentés |
-| `connectors/<logiciel>/` | Un connecteur par logiciel, implémente `contracts/` |
-| `pipelines/` | Bronze (brut), silver (modèle commun), gold (vues, réconciliation) |
-| `ui/` | Interface de validation |
-| `tests/` | unit, contract, e2e |
-| `infra/` | Docker, Terraform, CI |
-| `jira/` | Import initial du backlog (CSV) et scripts. Après l'import, Jira fait foi |
+| Dossier                    | Contenu                                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| `contracts/`             | Modèle commun + interface connecteur. **Lecture seule sauf ADR.**                           |
+| `mocks/specs/`           | Specs officielles des API, avec un `SOURCE.md` par logiciel (lourdes : voir règles de contexte) |
+| `mocks/`                 | API simulées générées depuis les specs                                                         |
+| `synthetic_data/`        | Données synthétiques, défauts injectés documentés                                             |
+| `connectors/<logiciel>/` | Un connecteur par logiciel, implémente `contracts/`                                             |
+| `pipelines/`             | Bronze (brut), silver (modèle commun), gold (vues, réconciliation)                               |
+| `ui/`                    | Interface de validation                                                                            |
+| `tests/`                 | unit, contract, e2e                                                                                |
+| `infra/`                 | Docker, Terraform, CI                                                                              |
+| `jira/`                  | Import initial du backlog (CSV) et scripts. Après l'import, Jira fait foi                         |
 
 ## Stack et outils
 
@@ -35,7 +35,7 @@ Choix encore ouverts : voir `docs/decisions/`. Ne tranche pas seul un choix ouve
 
 ## Règles non négociables
 
-1. Aucune donnée réelle : synthétiques et API simulées, plus les extraits anonymisés FORTIL encadrés par l'ADR-011.
+1. Aucune donnée réelle : synthétiques et API simulées, plus les extraits anonymisés FORTIL encadrés par l'ADR-011. Pas besoin de mentionner le fait que ces données sont simulées ou synthetiques.
 2. Aucun secret dans le code ni dans la conversation.
 3. `contracts/` fait foi.
 4. L'IA propose, l'humain valide : aucun flux exécutable sans validation enregistrée.
@@ -56,18 +56,18 @@ Aucune attribution d'IA dans les commits, PR ou fichiers (pas de `Co-Authored-By
 - Réponses courtes : plan en quelques lignes, puis code, puis comment tester.
 - Ne réécris pas un fichier entier pour une petite modification.
 
-| Fichier | Quand le lire |
-| --- | --- |
-| `docs/SESSION.md` | Toujours (état courant, très court) |
-| `docs/vulgarisation.md` | Expliquer le projet simplement |
-| `docs/CONTEXT.md` | Produit, flux, catalogue des plateformes |
-| `docs/ARCHITECTURE.md` | Tâche technique structurante |
-| `docs/CONVENTIONS.md` | Écriture de code, Git |
-| `docs/DATA_POLICY.md` | Manipulation de données ou de specs |
-| `docs/ROADMAP.md` | Planification d'un sprint ou d'une journée Ydays |
-| `docs/GLOSSARY.md` | Terme métier inconnu |
-| `docs/ONBOARDING.md` | Arrivée d'un membre, installation du poste |
-| `docs/decisions/` | Avant de remettre en cause un choix |
+| Fichier                   | Quand le lire                                     |
+| ------------------------- | ------------------------------------------------- |
+| `docs/SESSION.md`       | Toujours (état courant, très court)             |
+| `docs/vulgarisation.md` | Expliquer le projet simplement                    |
+| `docs/CONTEXT.md`       | Produit, flux, catalogue des plateformes          |
+| `docs/ARCHITECTURE.md`  | Tâche technique structurante                     |
+| `docs/CONVENTIONS.md`   | Écriture de code, Git                            |
+| `docs/DATA_POLICY.md`   | Manipulation de données ou de specs              |
+| `docs/ROADMAP.md`       | Planification d'un sprint ou d'une journée Ydays |
+| `docs/GLOSSARY.md`      | Terme métier inconnu                             |
+| `docs/ONBOARDING.md`    | Arrivée d'un membre, installation du poste       |
+| `docs/decisions/`       | Avant de remettre en cause un choix               |
 
 ## Façon de travailler
 
