@@ -35,6 +35,6 @@
 
 - ADR-006, 008, 009 ; `infra/` (compose, Dockerfile.mocks, odoo.conf, init PostgreSQL) ; `.dockerignore`
 - `AGENTS.md`, `ARCHITECTURE.md`, `ONBOARDING.md`, `vulgarisation.md`, `GLOSSARY.md`
-- `compose.yaml` et `infra/README.md` : PostgreSQL local démarré en une commande depuis `.env`
+- Un seul compose (`infra/docker-compose.yml`), `compose.yaml` supprimé ; `make up`, `make odoo`, `make down`
 
 Tests : `make test` (ou `uv run pytest -q`)
