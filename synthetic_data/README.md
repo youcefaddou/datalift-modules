@@ -40,4 +40,10 @@ Tests : `uv run pytest -q tests/unit/synthetic_data`
 
 ## Défauts injectés (DL-38)
 
-Défauts injectés et vérité terrain : [DEFECTS.md](DEFECTS.md).
+Le même jeu v1, avec des défauts connus et leur vérité terrain (`ground_truth.json`) :
+
+```bash
+make synth-defects            # graine 42, sortie dans synthetic_data/output/v1_defects/
+```
+
+Catalogue des défauts, champs visés et format de la vérité terrain : [DEFECTS.md](DEFECTS.md).

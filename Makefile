@@ -1,4 +1,4 @@
-.PHONY: setup test lint format mocks synth up down odoo
+.PHONY: setup test lint format mocks synth synth-defects up down odoo
 
 setup: ## Installe les dépendances (prérequis : uv)
 	@command -v uv >/dev/null || { echo "uv manquant : curl -LsSf https://astral.sh/uv/install.sh | sh"; exit 1; }
@@ -22,6 +22,9 @@ mocks: ## IFS sur :8001, Progessi sur :8002 (Ctrl+C pour tout arrêter)
 
 synth: ## Données synthétiques v1 (silver) dans synthetic_data/output/v1 (SEED=42 par défaut)
 	uv run python -m synthetic_data.generator --seed $(or $(SEED),42)
+
+synth-defects: ## Données v1 avec défauts + ground_truth.json dans synthetic_data/output/v1_defects
+	uv run python -m synthetic_data.build_defects --seed $(or $(SEED),42)
 
 COMPOSE := docker compose -f infra/docker-compose.yml --env-file .env
 

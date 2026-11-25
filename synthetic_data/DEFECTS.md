@@ -2,7 +2,7 @@
 
 Les données synthétiques contiennent des défauts volontaires. Ils servent à mesurer ce que DataLift détecte : chaque défaut injecté est enregistré dans un fichier de vérité terrain, que les tests comparent aux anomalies trouvées par le pipeline.
 
-Code : `synthetic_data/defects.py`. Tests : `tests/unit/synthetic_data/test_defects.py`.
+Code : `synthetic_data/defects.py` (injecteur) et `synthetic_data/build_defects.py` (jeu v1 avec défauts). Tests : `tests/unit/synthetic_data/test_defects.py` et `test_build_defects.py`.
 
 ## Catalogue
 
@@ -59,17 +59,37 @@ Code : `synthetic_data/defects.py`. Tests : `tests/unit/synthetic_data/test_defe
 
 Les montants et les heures sont écrits sous forme de chaînes (`"130.00"`), pour ne jamais passer par des flottants.
 
-## Branchement avec le générateur
+## Jeu v1 avec défauts
 
-À faire quand le générateur existe : un point d'entrée appelle le générateur puis l'injecteur, avec la même graine.
+`synthetic_data/build_defects.py` branche l'injecteur sur le générateur du jeu v1 : il produit le jeu propre, le convertit en dictionnaires, injecte les défauts avec la même graine, puis écrit les données et la vérité terrain. Le code du générateur n'est pas modifié.
 
-```python
-from synthetic_data.defects import DefectInjector
-
-injector = DefectInjector(seed=42)
-invoices = injector.duplicates(invoices, flow=1, obj="invoice", id_field="id")
-invoices = injector.invoices_without_po(invoices, obj="invoice", id_field="id", po_field="po")
-injector.write_ground_truth(output_dir / "ground_truth.json")
+```bash
+make synth-defects            # graine 42, sortie dans synthetic_data/output/v1_defects/
+make synth-defects SEED=7     # autre graine
 ```
 
-Les noms d'objets et de champs sont à aligner avec le générateur des données synthétiques v1.
+La sortie contient les 6 fichiers du jeu v1 et `ground_truth.json`. Elle n'est pas commitée : avec la même graine, le script produit exactement les mêmes fichiers.
+
+Les défauts sont injectés dans les données au format silver (`contracts/v1`). L'identifiant de chaque enregistrement est `datalift_id`.
+
+| Fichier | Flux | Défaut | Champ |
+| --- | --- | --- | --- |
+| `supplier_invoices.json` | 1 | `DUPLICATE` | `datalift_id` (copie suffixée `-DUP`, même `invoice_no`) |
+| `supplier_invoices.json` | 1 | `AMOUNT_MISMATCH` | `gross_curr_amount` (le TTC ne vaut plus HT + TVA) |
+| `supplier_invoices.json` | 1 | `INVOICE_WITHOUT_PO` | `purchase_order_datalift_id` |
+| `supplier_invoices.json` | 1 | `UNKNOWN_SUPPLIER` | `supplier_datalift_id` |
+| `supplier_invoices.json` | 1 | `MISSING_FIELD` | `invoice_no` |
+| `employees.json` | 2 | `DUPLICATE` | `datalift_id` |
+| `employees.json` | 2 | `MISSING_FIELD` | `family_name` |
+| `time_entries.json` | 3 | `DUPLICATE` | `datalift_id` |
+| `time_entries.json` | 3 | `UNKNOWN_EMPLOYEE` | `employee_datalift_id` |
+| `time_entries.json` | 3 | `HOURS_OUT_OF_RANGE` | `hours` |
+| `time_entries.json` | 3 | `MISSING_FIELD` | `work_effort_id` |
+
+`suppliers.json`, `purchase_orders.json` et `projects.json` restent identiques au jeu propre.
+
+Avec la graine 42 : 162 défauts (2 de chaque type sur les 50 factures et les 40 collaborateurs, 34 à 40 de chaque type sur les 800 saisies de temps).
+
+Certains défauts rendent un enregistrement invalide au sens des contrats : heures négatives (`hours` doit être positif ou nul) et champs obligatoires vides (`invoice_no`, `work_effort_id`). Le chargement en objets silver les rejette : ce rejet fait partie de la détection attendue.
+
+Tests : `tests/unit/synthetic_data/test_build_defects.py`.
