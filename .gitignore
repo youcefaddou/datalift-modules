@@ -17,6 +17,8 @@ build/
 
 # Données locales
 data/
+# Sortie de make synth (reproductible, non commitée)
+synthetic_data/output/
 *.parquet
 *.duckdb
 *.db
