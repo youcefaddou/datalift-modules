@@ -1,6 +1,6 @@
 # ADR-011 — Extraits anonymisés de FORTIL Infogérance : cadre et pilote
 
-- **Statut :** proposée
+- **Statut :** adoptée
 - **Date :** 2026-11-25
 - **Auteur :** Youcef Addou
 
@@ -27,8 +27,7 @@ Option 2, avec les règles suivantes.
 
 **Avant réception**
 
-- Accord écrit de FORTIL Infogérance sur le périmètre de l'extrait, sa durée de conservation et son usage (pilote DataLift uniquement).
-- **L'anonymisation est faite chez FORTIL, avant tout envoi.** L'équipe ne reçoit jamais une donnée non anonymisée.
+- **L'anonymisation est faite chez FORTIL, avant tout envoi.** Fait par Addou Youcef grace a son Anon_ToolKit. Il marche sur un systeme de clé/valeur, par exemple: Nom = PERSONNE_001ecfz
 - Anonymisation irréversible : noms, prénoms, emails, téléphones, adresses, IBAN et numéros de sécurité sociale sont remplacés par des valeurs fictives. Les identifiants sont renumérotés de façon cohérente d'une table à l'autre, et aucune table de correspondance ne quitte FORTIL. Les noms de fournisseurs et de clients sont remplacés.
 
 **À la réception**

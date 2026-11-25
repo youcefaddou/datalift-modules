@@ -35,7 +35,7 @@ Choix encore ouverts : voir `docs/decisions/`. Ne tranche pas seul un choix ouve
 
 ## Règles non négociables
 
-1. Aucune donnée réelle : synthétiques et API simulées uniquement.
+1. Aucune donnée réelle : synthétiques et API simulées, plus les extraits anonymisés FORTIL encadrés par l'ADR-011.
 2. Aucun secret dans le code ni dans la conversation.
 3. `contracts/` fait foi.
 4. L'IA propose, l'humain valide : aucun flux exécutable sans validation enregistrée.

@@ -8,6 +8,7 @@
 
 - Données synthétiques générées par `synthetic_data/`.
 - Spécifications publiques des API (OpenAPI, JSON, collections Postman) dans `mocks/specs/`, avec leur source et leur date dans un `SOURCE.md`.
+- Extraits anonymisés de FORTIL Infogérance pour le pilote, selon la procédure de l'ADR-011 : jamais commités, jamais envoyés à un LLM, supprimés après le pilote.
 
 ## Avant d'ajouter une spécification d'API
 
