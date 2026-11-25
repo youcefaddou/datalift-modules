@@ -22,7 +22,7 @@
 
 ## Points ouverts
 
-- Flux 3 : nom de la projection IFS de saisie des temps par le manager (`TimeCardManagerHandling` ?), via *Debug > Page Info*.
+- Flux 3 : nom de la projection IFS de saisie des temps par le manager (`TimeCardManagerHandling` ?), via _Debug > Page Info_.
 - Faire valider par FORTIL : Odoo à la place de Notilus, Personio à la place d'eTemptation. Flux M2 vers Sage à redéfinir (pas de paie).
 - Yooz, Lucca, Teamtailor, Sage : lien officiel, date et CGU à compléter dans les `SOURCE.md`.
 - `.env.example` (non modifiable par Claude) : retirer Hugging Face, ajouter `OPENROUTER_API_KEY`, `OPENROUTER_BASE_URL`, `OPENROUTER_MODEL`, `POSTGRES_PASSWORD`, `ODOO_DB_PASSWORD`.
