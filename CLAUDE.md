@@ -15,6 +15,7 @@
 - Fichiers de `docs/` : à la demande, selon la table de AGENTS.md.
 - Tests ciblés plutôt que toute la suite.
 - Commit et push uniquement sur demande.
+- Aucune attribution d'IA : pas de `Co-Authored-By`, pas de « Generated with … » dans les commits, les PR ni ailleurs. Aucun assistant IA ne doit apparaître comme contributeur du projet (réglage `attribution` de `.claude/settings.json`).
 
 ## Fin de tâche
 

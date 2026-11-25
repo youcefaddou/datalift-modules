@@ -47,6 +47,7 @@ Choix encore ouverts : voir `docs/decisions/`. Ne tranche pas seul un choix ouve
 ## Conventions (résumé)
 
 Code et commits en anglais (Conventional Commits), documentation en français, rédigée simplement et sans métaphore. Tables `bronze_`, `silver_`, `gold_`. Détails : `docs/CONVENTIONS.md`.
+Aucune attribution d'IA dans les commits, PR ou fichiers (pas de `Co-Authored-By`, pas de « Generated with … ») : aucun assistant ne doit apparaître comme contributeur.
 
 ## Règles de contexte (économie de tokens)
 
