@@ -101,11 +101,40 @@ def dark_slide(lines):
 dark_slide([[("Oral de validation · Ydays 3 · 16 décembre 2026", {"bold": True, "color": WHITE})],
             "Youcef Addou, Ilyes Chabab, Yannis Staali · pour l'équipe DataLift"])
 
+# 1 bis. Équipe : pilotage et deux pôles -------------------------------------
+s = content_slide("L'équipe : un pilotage, deux pôles")
+def member(slide, x, y, w, ini, name, role, count, fill):
+    badge(slide, x, y, ini, size=0.55, fill=fill, font=15)
+    text(slide, x + 0.75, y - 0.04, w - 1.75, 1.0, [[(name, {"bold": True, "size": 16})], [(role, {"size": 13, "color": INK2})]],
+         spacing=0)
+    text(slide, x + w - 1.0, y, 0.7, 0.55, str(count), size=20, bold=True, color=fill, align=PP_ALIGN.RIGHT,
+         anchor=MSO_ANCHOR.MIDDLE)
+cols = [(0.6, 3.5, "Pilotage", "Jira, ADR, oraux", [("YA", "Youcef Addou", "Chef de projet, IA", 18)], INDIGO),
+        (4.4, 3.5, "Pôle infra", "VPS, Docker, CI/CD", [("YM", "Yasser Moulfi", "Infra et sécurité", 14)], CYAN),
+        (8.2, 4.5, "Pôle data et IA", "Connecteurs, pipelines, qualité, IA",
+         [("IC", "Ilyes Chabab", "Connecteurs, pipelines", 19), ("YS", "Yannis Staali", "Agent IA et mesure", 19),
+          ("AK", "Asmae Kaysouny", "Qualité, réconciliation", 18), ("NA", "Ndeye Aida Ndour", "Données synthétiques", 18)], BLUE)]
+for x, w, h, scope, people, c in cols:
+    box(s, x, 1.55, w, 3.85, fill=TINT)
+    text(s, x + 0.3, 1.75, w - 1.3, 0.8, [[(h, {"bold": True, "size": 20, "color": c})], [(scope, {"size": 13, "color": INK2})]],
+         spacing=2)
+    text(s, x + w - 1.0, 2.2, 0.7, 0.3, "tickets", size=11, color=INK2, align=PP_ALIGN.RIGHT)
+    for j, (ini, n, r, k) in enumerate(people):
+        member(s, x + 0.3, 2.65 + j * 0.68, w, ini, n, r, k, c)
+box(s, 0.6, 5.7, 12.1, 0.95, fill=NAVY)
+text(s, 0.95, 5.7, 11.4, 0.95,
+     [[("Charge estimée sur 106 tickets : ", {"bold": True, "color": CYAN}),
+       ("18 à 19 par personne en data, 14 en infra (plus lourds), 56 h chacun.", {"color": WHITE})],
+      [("Autonomie : ", {"bold": True, "color": CYAN}),
+       ("chacun choisit ses tickets dans le backlog de son pôle, livrés par une PR relue.", {"color": WHITE})]],
+     size=15, anchor=MSO_ANCHOR.MIDDLE, spacing=2)
+
 # 2. Problème ---------------------------------------------------------------
 s = content_slide("Des logiciels métier qui communiquent mal")
 box(s, 0.6, 1.6, 4.3, 4.9, fill=NAVY)
 text(s, 0.95, 2.1, 3.6, 1.6, "≈ 10", size=96, bold=True, color=CYAN)
-text(s, 0.95, 3.85, 3.6, 2.4, ["logiciels métier dans une PME de 50 à 200 personnes",
+text(s, 0.95, 5.75, 3.6, 0.6, [[("Porteur : l'équipe, projet entrepreneurial", {"bold": True})]], size=13, color=CYAN)
+text(s, 0.95, 3.85, 3.6, 1.8, ["logiciels métier dans une PME de 50 à 200 personnes",
                                 [("factures, ERP, RH, recrutement, temps, frais, comptabilité", {"size": 14, "color": "C9D3EA"})]],
      size=20, color=WHITE, bold=True, spacing=12)
 pains = [("Ressaisies", "Les mêmes données saisies plusieurs fois, dans plusieurs outils."),
@@ -237,7 +266,7 @@ for i, c in enumerate(ctrl):
     box(s, x, 4.6, 2.1, 0.8, fill=INDIGO)
     text(s, x, 4.6, 2.1, 0.8, c, size=17, bold=True, color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 text(s, 0.6, 5.75, 12.1, 0.9,
-     [[("Stack : ", {"bold": True}), ("Python 3.12, Pydantic, FastAPI, PostgreSQL, Microsoft Fabric (repli DuckDB), Docker, Terraform, GitHub Actions", {"color": INK2})]],
+     [[("Stack : ", {"bold": True}), ("Python 3.12, FastAPI, PostgreSQL, Microsoft Fabric (repli DuckDB), LLM via OpenRouter, Docker sur VPS Hetzner, GitHub Actions", {"color": INK2})]],
      size=15)
 
 # 8. Données synthétiques ---------------------------------------------------
@@ -274,17 +303,6 @@ for i, (k, d) in enumerate(kpis):
     box(s, x, 4.0, 3.8, 2.5, fill=NAVY)
     text(s, x + 0.3, 4.25, 3.3, 2.2, [[(k, {"bold": True, "size": 44, "color": CYAN})], [(d, {"size": 16, "color": WHITE})]], spacing=4)
 
-# 10. Équipe -----------------------------------------------------------------
-s = content_slide("L'équipe")
-team = [("YA", "Youcef Addou", "Chef de projet et architecte data", INDIGO), ("IC", "Ilyes Chabab", "Data engineering", BLUE),
-        ("YS", "Yannis Staali", "Intelligence artificielle", BLUE), ("YM", "Yasser Moulfi", "Infra et cloud", CYAN),
-        ("AK", "Asmae Kaysouny", "IA et data", BLUE), ("NA", "Ndeye Aida Ndour", "IA et data", BLUE)]
-for i, (ini, n, r, c) in enumerate(team):
-    x, y = 0.6 + (i % 3) * 4.1, 1.65 + (i // 3) * 2.5
-    box(s, x, y, 3.8, 2.2, fill=TINT)
-    badge(s, x + 0.35, y + 0.4, ini, size=1.0, fill=c, font=26)
-    text(s, x + 1.6, y + 0.4, 2.1, 1.5, [[(n, {"bold": True, "size": 19})], [(r, {"size": 15, "color": INK2})]], spacing=2)
-
 # 11. Organisation -----------------------------------------------------------
 s = content_slide("Organisation : Scrum, Jira et 8 sprints")
 s.shapes.add_picture(str(ASSETS / "gantt_datalift_m1.png"), Inches(0.45), Inches(1.35), width=Inches(9.9))
@@ -296,59 +314,83 @@ for i, (k, d) in enumerate(stats):
     text(s, 10.75, y + 0.12, 1.85, 0.9, [[(k, {"bold": True, "size": 28, "color": CYAN if dark else INDIGO})],
                                          [(d, {"size": 13, "color": WHITE if dark else INK2})]], spacing=0)
 
-# 12. Risques et prochaines étapes --------------------------------------------
-s = content_slide("Risques maîtrisés et prochaines étapes")
-risks = [("Capacité", "L'équipe travaille une journée par sprint : tickets courts, finis dans la journée."),
-         ("Flux 3", "En cas de retard, il est montré au niveau du catalogue. Les flux 1 et 2 ne sont pas négociables."),
-         ("Décisions ouvertes", "Orchestration, interface, modèle IA, accès Fabric : tranchées par écrit avant le sprint concerné.")]
-for i, (h, d) in enumerate(risks):
-    y = 1.6 + i * 1.65
-    box(s, 0.6, y, 6.6, 1.45)
-    badge(s, 0.9, y + 0.41, "!", fill=INDIGO)
-    text(s, 1.8, y + 0.2, 5.2, 1.1, [[(h, {"bold": True, "size": 19})], [(d, {"size": 14, "color": INK2})]], spacing=2)
-box(s, 7.6, 1.6, 5.1, 4.75, fill=NAVY)
-text(s, 7.95, 1.85, 4.5, 0.5, "Prochains jalons", size=20, bold=True, color=CYAN)
-miles = [("20/01", "Données chargées et profilées"), ("21/01", "Rapport de qualité v1"), ("03/03", "Mapping IA v1 mesuré")]
-for i, (d, l) in enumerate(miles):
-    y = 2.6 + i * 1.15
-    badge(s, 7.95, y, "↑", size=0.6, fill=BLUE, font=20)
-    text(s, 8.75, y - 0.05, 3.8, 0.75, [[(d, {"bold": True, "size": 20, "color": WHITE})], [(l, {"size": 14, "color": "C9D3EA"})]], spacing=0)
+# 12. Limites du projet ------------------------------------------------------
+s = content_slide("Les limites du projet, assumées")
+text(s, 0.6, 1.5, 7, 0.4, "Hors périmètre du M1", size=18, bold=True, color=INK2)
+limits = [("Aucune donnée réelle", "Données synthétiques et API simulées depuis les specs officielles. Pas de client en production."),
+          ("3 flux exécutés, pas 8", "Les autres plateformes restent au catalogue : correspondances proposées, pas exécutées."),
+          ("L'IA ne décide jamais seule", "Modèles généralistes au M1 ; un modèle spécialisé n'arrive qu'au M2."),
+          ("Pas de paie, pas de multi-entreprise", "Hors cible du M1 : trop sensibles ou trop larges pour 8 journées.")]
+for i, (h, d) in enumerate(limits):
+    y = 2.0 + i * 1.15
+    box(s, 0.6, y, 7.3, 1.0, fill=TINT)
+    badge(s, 0.85, y + 0.2, "✕", size=0.6, fill=INDIGO, font=18)
+    text(s, 1.7, y + 0.12, 6.0, 0.8, [[(h, {"bold": True, "size": 17})], [(d, {"size": 13, "color": INK2})]], spacing=0)
+box(s, 8.3, 1.5, 4.4, 5.0, fill=NAVY)
+text(s, 8.65, 1.75, 3.8, 0.5, "Nos moyens", size=20, bold=True, color=CYAN)
+means = [("6", "personnes, en 2 pôles"), ("1 j", "par sprint (7 h), 8 sprints"), ("≈ 11 €", "par mois : VPS de 2 Go"),
+         ("10 $", "de crédit IA, une seule fois")]
+for i, (k, d) in enumerate(means):
+    y = 2.4 + i * 1.0
+    text(s, 8.65, y, 1.7, 0.8, k, size=30, bold=True, color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 10.35, y, 2.2, 0.8, d, size=14, color="C9D3EA", anchor=MSO_ANCHOR.MIDDLE)
+
+# 12 bis. Risques hiérarchisés ------------------------------------------------
+s = content_slide("Risques hiérarchisés et besoins")
+text(s, 0.6, 1.5, 8, 0.4, "Par criticité (probabilité × impact)", size=18, bold=True, color=INK2)
+LEVEL = {"Élevée": INDIGO, "Moyenne": BLUE, "Faible": CYAN}
+risks = [("Élevée", "Capacité : 1 journée par sprint", "Tickets de 5 points max, finis dans la journée ; flux 1 et 2 d'abord."),
+         ("Élevée", "IA sous les 80 % de bonnes correspondances", "Mesurée à chaque sprint ; modèle changé par simple configuration."),
+         ("Moyenne", "API réelles inaccessibles", "API simulées depuis les specs officielles ; Odoo réel en Docker."),
+         ("Moyenne", "Retard du flux 3", "Montré au niveau du catalogue ; flux 1 et 2 non négociables."),
+         ("Faible", "Choix encore ouverts", "Orchestration, interface : tranchés par ADR avant le sprint.")]
+for i, (lvl, h, d) in enumerate(risks):
+    y = 1.95 + i * 0.93
+    box(s, 0.6, y, 7.9, 0.8, fill=TINT)
+    box(s, 0.8, y + 0.2, 1.15, 0.4, fill=LEVEL[lvl], radius=0.5)
+    text(s, 0.8, y + 0.2, 1.15, 0.4, lvl, size=12, bold=True, color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 2.15, y + 0.08, 6.2, 0.7, [[(h, {"bold": True, "size": 15})], [(d, {"size": 12, "color": INK2})]], spacing=0)
+box(s, 8.9, 1.5, 3.8, 5.0, fill=NAVY)
+text(s, 9.2, 1.75, 3.3, 0.5, "Besoins d'accompagnement", size=18, bold=True, color=CYAN)
+needs = ["Un expert métier pour valider le catalogue (Odoo, Personio)", "Un regard data et IA sur notre jeu de référence",
+         "L'accès aux GPU Ynov pour le modèle spécialisé du M2", "Un point d'étape avant le sprint de l'agent IA"]
+text(s, 9.2, 2.4, 3.3, 4.0, [[("•  ", {"color": CYAN, "bold": True}), (n, {})] for n in needs], size=14, color=WHITE, spacing=10)
 
 # 13. Fin --------------------------------------------------------------------
 dark_slide([[("Merci. Vos questions ?", {"bold": True, "color": WHITE, "size": 26})]])
 
 # Notes de présentation : puces courtes, une liste par slide ------------------
 NOTES = [
-    ["Youcef · 20 s", "Bonjour, équipe DataLift", "Plan : problème, solution, périmètre, vision, architecture, IA, équipe, planning"],
-    ["Youcef · 1 min", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
+    ["Youcef · 15 s", "Bonjour, équipe DataLift", "Plan : équipe, problème, solution, périmètre, architecture, IA, organisation, limites, risques"],
+    ["Youcef · 30 s", "6 personnes : un pilotage et deux pôles, infra et data", "Pôle infra : VPS, Docker, CI/CD. Pôle data et IA : connecteurs, pipelines, IA",
+     "Charge estimée sur 106 tickets : data 77, infra 11, pilotage 18 ; 18 à 19 par personne en data, 14 pour Yasser", "Autonomie : chacun choisit ses tickets dans le backlog de son pôle, livrés par PR relue"],
+    ["Youcef · 45 s", "Pas de commanditaire externe : projet porté par l'équipe, pensé pour devenir une startup", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
      "Moment le plus risqué : changer d'ERP, reprise des données à la main"],
-    ["Youcef · 1 min", "La fiche projet parlait de migration d'ERP : c'est toujours le cas",
-     "Une migration = un flux exécuté une seule fois", "Le même moteur gère aussi les échanges récurrents",
+    ["Youcef · 45 s", "La fiche projet parlait de migration d'ERP : c'est toujours le cas",
+     "Une migration = un flux exécuté une seule fois ; le même moteur gère les échanges récurrents",
      "Livrables annoncés conservés : qualité, mapping IA, réconciliation, tableau de bord"],
-    ["Youcef · 1 min", "5 étapes : connecter, réunir, demander, valider, exécuter", "L'utilisateur écrit en français",
-     "L'IA propose avec un score et une explication", "Rien ne s'exécute sans validation humaine (cohérent avec l'AI Act)"],
+    ["Youcef · 45 s", "5 étapes : connecter, réunir, demander, valider, exécuter", "L'IA propose avec un score et une explication",
+     "Rien ne s'exécute sans validation humaine (cohérent avec l'AI Act)"],
     ["Youcef · 45 s", "8 plateformes au catalogue : l'IA propose des correspondances entre toutes",
      "3 flux exécutés de bout en bout, tous vers IFS", "Flux 1 et 2 indispensables, flux 3 après le flux 2"],
-    ["Youcef · 45 s", "M1 : prouver sur 3 flux réels de bout en bout",
-     "M2 : plus de flux, IA spécialisée, analytique, assistant IA", "Ambition : un produit qui peut devenir une startup"],
-    ["Youcef · 45 s", "L'existant est riche, on ne le nie pas",
-     "Notre angle : PME, logiciels français, humain qui valide, supervision intégrée",
-     "On réutilise l'open source au lieu de tout recréer"],
-    ["Ilyes · 1 min", "Plan de données : bronze, silver, gold", "Bronze : copie brute, jamais modifiée",
-     "Silver : modèle commun contrôlé, origine tracée sur chaque donnée", "Gold : vues et réconciliation",
-     "Plan de contrôle : catalogue, IA, validation, orchestration, supervision"],
-    ["Ilyes · 45 s", "Aucune donnée réelle", "Les objets des 3 flux, générés depuis les specs",
-     "Défauts injectés volontairement et documentés", "But : mesurer ce que DataLift détecte"],
-    ["Yannis · 1 min 15", "Comprend la demande : source, cible, objet, filtre", "Propose champ à champ avec un score de confiance",
-     "Explique chaque proposition", "Objectif : au moins 80 % de bonnes correspondances, mesuré sur un jeu de référence",
-     "Choix du modèle (API ou local) tranché avant le sprint 3"],
-    ["Youcef · 30 s", "6 personnes : 1 chef de projet, 1 infra et cloud, 4 IA et data", "Rôles détaillés attribués le 25/11"],
-    ["Youcef · 1 min", "Scrum : 8 sprints calés sur les journées Ydays",
+    ["Youcef · 30 s", "M1 : prouver sur 3 flux de bout en bout", "M2 : plus de flux, IA spécialisée, analytique, assistant IA"],
+    ["Youcef · 30 s", "L'existant est riche, on ne le nie pas", "Notre angle : PME, logiciels français, humain qui valide, supervision intégrée"],
+    ["Ilyes · 45 s", "Plan de données : bronze (brut), silver (modèle commun, origine tracée), gold (vues, réconciliation)",
+     "Plan de contrôle : catalogue, IA, validation, orchestration, supervision",
+     "Hébergement : VPS Hetzner de 2 Go, une limite de mémoire par service"],
+    ["Ilyes · 30 s", "Aucune donnée réelle : objets des 3 flux générés depuis les specs",
+     "Défauts injectés et documentés, pour mesurer ce que DataLift détecte"],
+    ["Yannis · 1 min", "Comprend la demande : source, cible, objet, filtre", "Propose champ à champ avec un score de confiance, et explique",
+     "Objectif : au moins 80 % de bonnes correspondances, mesuré sur un jeu de référence",
+     "Modèles appelés via OpenRouter : on change de modèle par configuration (ADR-008)"],
+    ["Youcef · 45 s", "Scrum : 8 sprints calés sur les journées Ydays",
      "Jira : 13 épopées, 94 tickets, chacun relié au cahier des charges", "Une tâche = une branche = une PR",
-     "Deux jalons : aujourd'hui et l'oral final du 27/05"],
-    ["Youcef · 45 s", "Capacité : une journée par sprint, donc des tickets courts", "Flux 3 en retard : montré au niveau du catalogue",
-     "Décisions ouvertes tranchées par écrit (ADR)", "Prochains jalons : 20/01, 21/01, 03/03"],
-    ["Youcef", "Ouvrir les questions", "Ilyes : données et architecture", "Yannis : IA"],
+     "Jalons : 20/01 données profilées, 21/01 qualité v1, 03/03 mapping IA mesuré, 27/05 oral final"],
+    ["Youcef · 40 s", "On a calibré l'ambition : ce qu'on ne fera pas au M1 est écrit",
+     "Moyens réels : 6 personnes, 1 journée par sprint, environ 11 € par mois et 10 $ de crédit IA"],
+    ["Youcef · 1 min", "Risques classés par criticité, chacun avec sa parade",
+     "Les deux plus forts : la capacité et la qualité de l'IA", "Ce dont on a besoin de votre part : à droite"],
+    ["Youcef", "Ouvrir les questions", "Ilyes : données et architecture", "Yannis : IA", "Yasser : infra"],
 ]
 assert len(NOTES) == len(prs.slides._sldIdLst), (len(NOTES), len(prs.slides._sldIdLst))
 for slide, lines in zip(prs.slides, NOTES):

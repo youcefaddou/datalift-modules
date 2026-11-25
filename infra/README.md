@@ -1,30 +1,20 @@
 # infra
 
-Docker Compose (postes locaux et VPS Hetzner), Terraform, workflows GitHub Actions. Choix d'hébergement : voir `docs/decisions/`.
+Un seul Docker Compose, `infra/docker-compose.yml`, pour les postes et le VPS Hetzner CPX12. Limite de mémoire par service : ADR-009.
 
+## Lancer
 
-## PostgreSQL local
-
-Depuis la racine du dépôt, créer le fichier `.env` à partir de [.env.example](../.env.example), puis lancer PostgreSQL en une commande :
+Depuis la racine du dépôt, avec un `.env` copié depuis [.env.example](../.env.example) (`POSTGRES_PASSWORD` et `ODOO_DB_PASSWORD` obligatoires ; `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PORT` facultatifs) :
 
 ```bash
 cp .env.example .env
-docker compose up -d
+make up      # PostgreSQL + mocks IFS et Progessi
+make odoo    # Odoo Notes de frais (installe ou met à jour le module, puis démarre)
+make down    # arrête sans supprimer les données
 ```
 
-Les identifiants et le port sont lus depuis `.env` : `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_PORT`.
+Pour supprimer aussi les données : `docker compose -f infra/docker-compose.yml --env-file .env down -v`.
 
-Le service PostgreSQL est exposé localement sur `localhost:${POSTGRES_PORT}` et conserve ses données dans un volume Docker nommé `postgres_data`.
+Ports, liés à `127.0.0.1` : PostgreSQL `${POSTGRES_PORT:-5432}`, mock IFS 8001, mock Progessi 8002, Odoo 8069. Sur le VPS, par tunnel SSH : `ssh -L 8069:127.0.0.1:8069 <utilisateur>@<IP>`.
 
-Pour arrêter le conteneur sans supprimer les données :
-
-```bash
-docker compose down
-```
-
-Pour supprimer aussi le volume de stockage local :
-
-```bash
-docker compose down -v
-```
-
+Mémoire par service : `docker stats --no-stream`.

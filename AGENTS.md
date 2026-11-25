@@ -27,8 +27,8 @@ Projet étudiant Ydays (Ynov), M1 puis M2. Chef de projet et architecte : Youcef
 
 - Python 3.12, Pydantic v2, httpx, FastAPI, pytest, ruff.
 - PostgreSQL, Microsoft Fabric (repli DuckDB).
-- IA : modèles open source (Qwen) sur un Space Hugging Face de l'organisation Ynov, en local pour le développement, budget 0 € (ADR-006).
-- Docker, Terraform, GitHub Actions. Hébergement : VPS Hetzner (offre à choisir).
+- IA : LLM via OpenRouter (API compatible OpenAI, modèles gratuits + crédit unique d'environ 10 $), Ollama en local en option (ADR-008).
+- Docker, Terraform, GitHub Actions. Hébergement : VPS Hetzner CPX12, 2 Go, budget mémoire par service (ADR-009, `infra/docker-compose.yml`).
 - Poste de travail : VS Code, Docker Desktop. Suivi : Jira, projet DataLift (clé `DL`). Code : GitHub.
 
 Choix encore ouverts : voir `docs/decisions/`. Ne tranche pas seul un choix ouvert : propose 2 options.
