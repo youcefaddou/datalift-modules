@@ -37,3 +37,7 @@ Les volumes se règlent dans la classe `Volumes` de `generator.py`.
 - Les noms sont manifestement fictifs (« Fictif », « Exemple »…) et les emails utilisent le domaine réservé `exemple.invalid`.
 
 Tests : `uv run pytest -q tests/unit/synthetic_data`
+
+## Défauts injectés (DL-38)
+
+Défauts injectés et vérité terrain : [DEFECTS.md](DEFECTS.md).
