@@ -41,3 +41,6 @@ mocks/specs/progessi/progessi.json
 # Fichiers verrou LibreOffice / Office
 .~lock.*#
 ~$*
+
+# Réglages Claude Code personnels
+.claude/settings.local.json
