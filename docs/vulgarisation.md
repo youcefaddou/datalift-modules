@@ -44,15 +44,15 @@ Deux garanties sur tous les flux :
 
 ## L'IA du projet
 
-- **Modèles open source** de la famille Qwen, servis par un Space Hugging Face privé de l'organisation Ynov. Coût : 0 €.
-- **Accès** : chaque membre rejoint l'organisation Ynov sur Hugging Face et dispose de 40 minutes de GPU par jour (ZeroGPU).
-- **En développement**, un modèle plus petit de la même famille peut tourner en local sur un PC avec un GPU de 8 Go.
+- **Modèles** appelés via OpenRouter, un service qui donne accès à de nombreux modèles (dont des modèles open source gratuits) avec une seule clé. Coût : un crédit unique d'environ 10 $.
+- **Accès** : une clé d'équipe, avec une limite de dépense, gardée dans le fichier `.env` de chacun.
+- **En développement**, un modèle peut aussi tourner en local (Ollama) sur un PC avec un GPU de 8 Go, sans changer le code.
 - **Un cadre fixé** : l'IA choisit parmi les objets, les liens et les actions de l'ontologie, ses réponses sont vérifiées automatiquement, et un humain valide.
-- **Veille** : les modèles open source évoluent en quelques semaines. À chaque sprint, on teste les nouveaux sur notre jeu de référence et on garde le meilleur.
-- **En M2**, un modèle de correspondance spécialisé sera entraîné sur les GPU dédiés de Ynov.
-- **Données** : aucune donnée réelle n'est envoyée aux modèles, et tout reste privé sur Hugging Face.
+- **Veille** : les modèles évoluent en quelques semaines. À chaque sprint, on teste les nouveaux modèles disponibles sur OpenRouter sur notre jeu de référence et on garde le meilleur.
+- **En M2**, un modèle de correspondance spécialisé sera entraîné sur les GPU dédiés de Ynov (décision à prendre).
+- **Données** : aucune donnée réelle n'est envoyée aux modèles, seulement des données synthétiques.
 
-Détails : [ADR-005](decisions/ADR-005-ontologie-liens-actions.md) (ontologie) et [ADR-006](decisions/ADR-006-modele-ia.md) (modèle IA).
+Détails : [ADR-005](decisions/ADR-005-ontologie-liens-actions.md) (ontologie) et [ADR-008](decisions/ADR-008-openrouter-llm.md) (modèle IA).
 
 ## Le périmètre M1
 

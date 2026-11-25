@@ -27,7 +27,7 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 | Composant | Rôle | Où |
 | --- | --- | --- |
 | Catalogue | Schémas des API et du modèle commun | modules (lecture des specs) |
-| Agent IA | Demande en langage naturel, flux et correspondances proposés, questions transverses (SQL en lecture seule sur gold) | équipe data, dans ce dépôt (dossier à définir). Modèle : ADR-006 |
+| Agent IA | Demande en langage naturel, flux et correspondances proposés, questions transverses (SQL en lecture seule sur gold) | équipe data, dans ce dépôt (dossier à définir). Modèle : ADR-008 (OpenRouter) |
 | Validation | Interface humaine | `ui/` |
 | Orchestrateur | Exécution des flux validés, dans l'ordre des dépendances (collaborateurs avant temps) | `pipelines/` (outil à valider) |
 | Supervision | Journaux, métriques, alertes | équipe data, dans `pipelines/` |
@@ -43,9 +43,9 @@ Version de travail. Le dossier d'architecture complet est tenu par le chef de pr
 ## Déploiement
 
 - Local : Docker Compose sur chaque poste (VS Code, Docker Desktop).
-- Environnement d'équipe : VPS Hetzner avec Docker Compose. Offre et configuration à choisir (ADR à rédiger).
+- Environnement d'équipe : VPS Hetzner CPX12 (2 Go) avec Docker Compose (`infra/docker-compose.yml`), budget mémoire par service : ADR-009.
 - CI : GitHub Actions. Infrastructure décrite avec Terraform.
 
 ## Décisions
 
-Voir `docs/decisions/`. Décisions en attente : orchestration, interface, offre du VPS.
+Voir `docs/decisions/`. Décisions en attente : orchestration, interface.

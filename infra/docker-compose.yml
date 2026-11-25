@@ -1,0 +1,70 @@
+# Stack for local workstations and the Hetzner CPX12 VPS (2 GB RAM), see ADR-009.
+# Ports are bound to 127.0.0.1: on the VPS, reach them through an SSH tunnel.
+# Sum of mem_limit stays under ~1.6 GB to leave room for the OS and Docker.
+
+x-mock: &mock
+  build:
+    context: ..
+    dockerfile: infra/Dockerfile.mocks
+  image: datalift-mocks
+  restart: unless-stopped
+  mem_limit: 128m
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    mem_limit: 384m
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-datalift}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-datalift}
+      ODOO_DB_PASSWORD: ${ODOO_DB_PASSWORD:?set ODOO_DB_PASSWORD in .env}
+    command: >
+      postgres
+      -c shared_buffers=96MB
+      -c effective_cache_size=256MB
+      -c work_mem=4MB
+      -c maintenance_work_mem=32MB
+      -c max_connections=30
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres/init-odoo.sh:/docker-entrypoint-initdb.d/init-odoo.sh:ro
+    ports: ["127.0.0.1:${POSTGRES_PORT:-5432}:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+
+  mock-ifs:
+    <<: *mock
+    command: uvicorn mocks.ifs.app:app --host 0.0.0.0 --port 8001
+    environment:
+      IFS_MOCK_CLIENT_ID: ${IFS_MOCK_CLIENT_ID:-datalift-mock}
+      IFS_MOCK_CLIENT_SECRET: ${IFS_MOCK_CLIENT_SECRET:-datalift-mock-secret}
+    ports: ["127.0.0.1:8001:8001"]
+
+  mock-progessi:
+    <<: *mock
+    command: uvicorn mocks.progessi.app:app --host 0.0.0.0 --port 8002
+    ports: ["127.0.0.1:8002:8002"]
+
+  # Odoo Community, Expenses module only (ADR-007). Shares the postgres instance.
+  # First run: docker compose run --rm odoo odoo -d odoo -i hr_expense --stop-after-init
+  odoo:
+    image: odoo:19
+    restart: unless-stopped
+    mem_limit: 640m
+    depends_on:
+      postgres: { condition: service_healthy }
+    environment:
+      HOST: postgres
+      USER: odoo
+      PASSWORD: ${ODOO_DB_PASSWORD}
+    volumes:
+      - ./odoo/odoo.conf:/etc/odoo/odoo.conf:ro
+      - odoodata:/var/lib/odoo
+    ports: ["127.0.0.1:8069:8069"]
+
+volumes:
+  pgdata:
+  odoodata:
