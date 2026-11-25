@@ -1,6 +1,7 @@
 """Base fields shared by all silver contract objects."""
 
 from datetime import datetime
+
 from pydantic import BaseModel, ConfigDict, Field
 
 

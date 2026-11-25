@@ -1,6 +1,6 @@
 """Contract tests for DataLift common schema v1."""
 
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 
 import pytest
@@ -21,7 +21,7 @@ LINEAGE = {
     "datalift_id": "dl:employee:stable-001",
     "source_system": "lucca",
     "source_id": "42",
-    "extracted_at": datetime(2026, 11, 25, 9, 0, tzinfo=timezone.utc),
+    "extracted_at": datetime(2026, 11, 25, 9, 0, tzinfo=UTC),
 }
 
 
