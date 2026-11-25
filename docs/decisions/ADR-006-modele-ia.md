@@ -1,6 +1,6 @@
 # ADR-006 — Modèle IA : open source sur un Space Hugging Face, budget 0 €
 
-- **Statut :** adoptée
+- **Statut :** remplacée par ADR-008
 - **Date :** 2026-10-14
 - **Auteur :** Youcef Addou
 
