@@ -45,5 +45,16 @@
      "lines": [{"workEffortId": "WE-1001", "days": [5, 6]}]},
     {"timesheetId": "TSH-1003", "partyId": "10001", "year": 2026, "month": 9, "statusId": "TIMESHEET_COMPLETED",
      "lines": [{"workEffortId": "WE-2001", "days": [21, 22, 23]}]}
+  ],
+  "emplLeaves": [
+    {"emplLeaveId": "EL-1000", "partyId": "10000", "leaveTypeId": "PAID_LEAVE", "emplLeaveReasonTypeId": "CASUAL",
+     "fromDate": "2026-10-19T00:00:00Z", "thruDate": "2026-10-23T23:59:59Z", "approverPartyId": "10001",
+     "leaveStatus": "LEAVE_APPROVED", "description": "Congés payés"},
+    {"emplLeaveId": "EL-1001", "partyId": "10001", "leaveTypeId": "SICK_LEAVE", "emplLeaveReasonTypeId": "MEDICAL",
+     "fromDate": "2026-10-07T00:00:00Z", "thruDate": "2026-10-09T23:59:59Z", "approverPartyId": "10000",
+     "leaveStatus": "LEAVE_APPROVED", "description": "Arrêt maladie"},
+    {"emplLeaveId": "EL-1002", "partyId": "10002", "leaveTypeId": "PAID_LEAVE", "emplLeaveReasonTypeId": "CASUAL",
+     "fromDate": "2026-11-02T00:00:00Z", "thruDate": "2026-11-06T23:59:59Z", "approverPartyId": "10001",
+     "leaveStatus": "LEAVE_CREATED", "description": "Congés payés"}
   ]
 }

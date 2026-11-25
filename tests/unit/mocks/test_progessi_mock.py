@@ -62,3 +62,33 @@ def test_seed_respects_progessi_rules() -> None:
             assert (entry["workEffortId"], sheet["partyId"]) in assigned, entry
             day = datetime.fromisoformat(entry["fromDate"])
             assert entry["fromDate"].startswith(month) and day.weekday() < 5, entry
+
+
+def test_empl_leaves_filter_and_embed_profile() -> None:
+    c = client()
+    leaves = c.get(f"{BASE}/emplLeaves", params={"profile.partyId": "10000"}).json()
+    assert [lv["emplLeaveId"] for lv in leaves] == ["EL-1000"]
+    assert leaves[0]["profile"]["lastName"] == "Fictif"
+    assert leaves[0]["leaveStatusDescription"] == "Approved"
+    pending = c.get(f"{BASE}/emplLeaves", params={"leaveStatus": "LEAVE_CREATED"}).json()
+    assert {lv["partyId"] for lv in pending} == {"10002"}
+    assert c.get(f"{BASE}/emplLeaves/EL-1001").json()["emplLeaveReasonTypeId"] == "MEDICAL"
+
+
+def test_sick_leaves_are_medical_leaves_only() -> None:
+    sick = client().get(f"{BASE}/sickLeaves").json()
+    assert sick and all(lv["emplLeaveReasonTypeId"] == "MEDICAL" for lv in sick)
+
+
+def test_leaves_never_overlap_worked_days() -> None:
+    c = client()
+    worked = {
+        (s["partyId"], e["fromDate"][:10])
+        for s in c.get(f"{BASE}/timesheets").json()
+        for e in s["timeEntries"]
+    }
+    for lv in c.get(f"{BASE}/emplLeaves").json():
+        start, end = datetime.fromisoformat(lv["fromDate"]), datetime.fromisoformat(lv["thruDate"])
+        assert start <= end, lv
+        for day in range(start.day, end.day + 1):
+            assert (lv["partyId"], f"{lv['fromDate'][:8]}{day:02d}") not in worked, lv

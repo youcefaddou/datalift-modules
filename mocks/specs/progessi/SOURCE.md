@@ -16,6 +16,7 @@
 | `timesheets` | `Timesheet`, `TimeEntry` | `timesheetId`, `partyId`, `fromDate`, `thruDate`, `statusId` (`TIMESHEET_IN_PROCESS`, `TIMESHEET_COMPLETED`, `TIMESHEET_APPROVED`) ; lignes `timeEntryId`, `workEffortId`, `fromDate`, `thruDate`, `hours` |
 | `projects` | `WorkEffort`, `WorkEffortPartyAssignment` | `workEffortId`, `workEffortTypeId`, `workEffortParentId` (sous-projet), `workEffortName`, `currentStatusId` ; affectations `partyId`, `roleTypeId`, `fromDate`, `thruDate` |
 | `profiles` | `Person`, `PartyIdentification`, `ContactMech` | `partyId`, `firstName`, `lastName`, `partyIdentifications` (`partyIdentificationTypeId`, `idValue`) |
+| `emplLeaves` | `EmplLeave` | `partyId`, `leaveTypeId`, `emplLeaveReasonTypeId` (`MEDICAL`, `CASUAL`), `fromDate`, `thruDate`, `approverPartyId`, `leaveStatus` (`LEAVE_CREATED`, `LEAVE_APPROVED`, `LEAVE_REJECTED`), `description` |
 
 ## Ce qui vient du fonctionnement de Progessi (décrit par Youcef)
 
@@ -27,4 +28,5 @@
 
 - Noms exacts `partyAssignments`, `timeEntries`, `reference`, type d'identifiant `PAYROLL_ID`, statut `PRJ_ACTIVE`, rôle `PROJECT_TEAM`.
 - `pageNumber` commence à 0 (convention `viewIndex` d'OFBiz), taille de page par défaut 100.
-- Pas encore reproduit : congés (`emplLeaves`, compteur de CP), notes de frais, paiements, authentification.
+- Congés : identifiant `emplLeaveId` (l'entité OFBiz a une clé composée), types `PAID_LEAVE` et `SICK_LEAVE`, profil imbriqué `profile` (filtres `profile.partyId` vus dans la collection). `sickLeaves` = congés de motif `MEDICAL` (dossier Postman non détaillé).
+- Pas encore reproduit : compteur de CP, notes de frais, paiements, authentification.

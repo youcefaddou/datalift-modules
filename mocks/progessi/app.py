@@ -14,7 +14,19 @@ from fastapi import Body, FastAPI, HTTPException, Request
 BASE = "/api/control/rest"
 HOURS_PER_DAY = 7.0
 DEFAULT_PAGE_SIZE = 100
-ID_FIELDS = {"profiles": "partyId", "projects": "workEffortId", "timesheets": "timesheetId"}
+ID_FIELDS = {
+    "profiles": "partyId",
+    "projects": "workEffortId",
+    "timesheets": "timesheetId",
+    "emplLeaves": "emplLeaveId",
+    "sickLeaves": "emplLeaveId",
+}
+# OFBiz StatusItem seed data (statusTypeId LEAVE_STATUS).
+LEAVE_STATUS = {
+    "LEAVE_CREATED": "Created",
+    "LEAVE_APPROVED": "Approved",
+    "LEAVE_REJECTED": "Rejected",
+}
 
 
 def _timesheet(raw: dict[str, Any]) -> dict[str, Any]:
@@ -47,6 +59,14 @@ def _timesheet(raw: dict[str, Any]) -> dict[str, Any]:
 def _load_seed() -> dict[str, list[dict[str, Any]]]:
     data = json.loads((Path(__file__).parent / "seed.json").read_text())
     data["timesheets"] = [_timesheet(t) for t in data["timesheets"]]
+    profiles = {p["partyId"]: p for p in data["profiles"]}
+    for leave in data["emplLeaves"]:
+        leave["leaveStatusDescription"] = LEAVE_STATUS[leave["leaveStatus"]]
+        leave["profile"] = profiles[leave["partyId"]]
+    # Reconstructed: the Postman "sickLeaves" folder is read as the MEDICAL subset of EmplLeave.
+    data["sickLeaves"] = [
+        lv for lv in data["emplLeaves"] if lv["emplLeaveReasonTypeId"] == "MEDICAL"
+    ]
     return data
 
 
