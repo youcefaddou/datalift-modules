@@ -135,6 +135,26 @@ def test_lineage_is_required() -> None:
         Supplier(SupplierId="SUP-1")
 
 
+@pytest.mark.parametrize(
+    "missing_field",
+    [
+        "source_system",
+        "source_id",
+        "extracted_at",
+    ],
+)
+def test_each_lineage_field_is_required(missing_field: str) -> None:
+    data = {
+        **LINEAGE,
+        "SupplierId": "SUP-1",
+        "Name": "Example",
+    }
+    del data[missing_field]
+
+    with pytest.raises(ValidationError):
+        Supplier(**data)
+
+
 def test_every_declared_field_has_source_metadata() -> None:
     models = (Supplier, PurchaseOrder, SupplierInvoice, InvoiceLine, Employee, Project, TimeEntry)
     for model in models:

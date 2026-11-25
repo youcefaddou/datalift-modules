@@ -14,6 +14,8 @@
 - `infra/docker-compose.yml` seul compose : `make up`, `make odoo`, `make down`.
 - Oral : 16 slides, 9 min 50, avec équipe en 2 pôles, partie commanditaire FORTIL, limites, risques hiérarchisés.
 - Veille OpenRouter faite (DL-117) : aucun Qwen gratuit ; `google/gemma-4-31b-it:free` par défaut, `qwen/qwen3.7-flash` en secours.
+- DL-35 : tests ajoutés pour vérifier que source_system, source_id et extracted_at sont obligatoires sur chaque objet Silver (15 tests de contrats réussis).
+
 
 ## Prochaine étape
 
