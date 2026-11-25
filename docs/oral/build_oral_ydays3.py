@@ -103,32 +103,38 @@ dark_slide([[("Oral de validation · Ydays 3 · 16 décembre 2026", {"bold": Tru
 
 # 1 bis. Équipe : pilotage et deux pôles -------------------------------------
 s = content_slide("L'équipe : un pilotage, deux pôles")
-def member(slide, x, y, ini, name, role, fill):
+def member(slide, x, y, w, ini, name, role, count, fill):
     badge(slide, x, y, ini, size=0.55, fill=fill, font=15)
-    text(slide, x + 0.75, y - 0.04, 2.9, 0.65, [[(name, {"bold": True, "size": 16})], [(role, {"size": 13, "color": INK2})]],
+    text(slide, x + 0.75, y - 0.04, w - 1.75, 1.0, [[(name, {"bold": True, "size": 16})], [(role, {"size": 13, "color": INK2})]],
          spacing=0)
-cols = [(0.6, 3.5, "Pilotage", "Jira, ADR, architecture, oraux", [("YA", "Youcef Addou", "Chef de projet, IA et data")], INDIGO),
-        (4.4, 3.5, "Pôle infra", "VPS, Docker, CI/CD, sécurité", [("YM", "Yasser Moulfi", "Infra et cloud")], CYAN),
+    text(slide, x + w - 1.0, y, 0.7, 0.55, str(count), size=20, bold=True, color=fill, align=PP_ALIGN.RIGHT,
+         anchor=MSO_ANCHOR.MIDDLE)
+cols = [(0.6, 3.5, "Pilotage", "Jira, ADR, oraux", [("YA", "Youcef Addou", "Chef de projet, IA", 18)], INDIGO),
+        (4.4, 3.5, "Pôle infra", "VPS, Docker, CI/CD", [("YM", "Yasser Moulfi", "Infra et sécurité", 14)], CYAN),
         (8.2, 4.5, "Pôle data et IA", "Connecteurs, pipelines, qualité, IA",
-         [("IC", "Ilyes Chabab", "IA et data"), ("YS", "Yannis Staali", "IA et data"),
-          ("AK", "Asmae Kaysouny", "IA et data"), ("NA", "Ndeye Aida Ndour", "IA et data")], BLUE)]
+         [("IC", "Ilyes Chabab", "Connecteurs, pipelines", 19), ("YS", "Yannis Staali", "Agent IA et mesure", 19),
+          ("AK", "Asmae Kaysouny", "Qualité, réconciliation", 18), ("NA", "Ndeye Aida Ndour", "Données synthétiques", 18)], BLUE)]
 for x, w, h, scope, people, c in cols:
     box(s, x, 1.55, w, 3.85, fill=TINT)
-    text(s, x + 0.3, 1.75, w - 0.6, 0.8, [[(h, {"bold": True, "size": 20, "color": c})], [(scope, {"size": 13, "color": INK2})]],
+    text(s, x + 0.3, 1.75, w - 1.3, 0.8, [[(h, {"bold": True, "size": 20, "color": c})], [(scope, {"size": 13, "color": INK2})]],
          spacing=2)
-    for j, (ini, n, r) in enumerate(people):
-        member(s, x + 0.3, 2.65 + j * 0.68, ini, n, r, c)
+    text(s, x + w - 1.0, 2.2, 0.7, 0.3, "tickets", size=11, color=INK2, align=PP_ALIGN.RIGHT)
+    for j, (ini, n, r, k) in enumerate(people):
+        member(s, x + 0.3, 2.65 + j * 0.68, w, ini, n, r, k, c)
 box(s, 0.6, 5.7, 12.1, 0.95, fill=NAVY)
 text(s, 0.95, 5.7, 11.4, 0.95,
-     [[("Autonomie : ", {"bold": True, "color": CYAN}),
-       ("chaque membre choisit ses tickets dans le backlog de son pôle, puis les livre par une PR relue.", {"color": WHITE})]],
-     size=17, anchor=MSO_ANCHOR.MIDDLE)
+     [[("Charge estimée sur 106 tickets : ", {"bold": True, "color": CYAN}),
+       ("18 à 19 par personne en data, 14 en infra (plus lourds), 56 h chacun.", {"color": WHITE})],
+      [("Autonomie : ", {"bold": True, "color": CYAN}),
+       ("chacun choisit ses tickets dans le backlog de son pôle, livrés par une PR relue.", {"color": WHITE})]],
+     size=15, anchor=MSO_ANCHOR.MIDDLE, spacing=2)
 
 # 2. Problème ---------------------------------------------------------------
 s = content_slide("Des logiciels métier qui communiquent mal")
 box(s, 0.6, 1.6, 4.3, 4.9, fill=NAVY)
 text(s, 0.95, 2.1, 3.6, 1.6, "≈ 10", size=96, bold=True, color=CYAN)
-text(s, 0.95, 3.85, 3.6, 2.4, ["logiciels métier dans une PME de 50 à 200 personnes",
+text(s, 0.95, 5.75, 3.6, 0.6, [[("Porteur : l'équipe, projet entrepreneurial", {"bold": True})]], size=13, color=CYAN)
+text(s, 0.95, 3.85, 3.6, 1.8, ["logiciels métier dans une PME de 50 à 200 personnes",
                                 [("factures, ERP, RH, recrutement, temps, frais, comptabilité", {"size": 14, "color": "C9D3EA"})]],
      size=20, color=WHITE, bold=True, spacing=12)
 pains = [("Ressaisies", "Les mêmes données saisies plusieurs fois, dans plusieurs outils."),
@@ -357,8 +363,8 @@ dark_slide([[("Merci. Vos questions ?", {"bold": True, "color": WHITE, "size": 2
 NOTES = [
     ["Youcef · 15 s", "Bonjour, équipe DataLift", "Plan : équipe, problème, solution, périmètre, architecture, IA, organisation, limites, risques"],
     ["Youcef · 30 s", "6 personnes : un pilotage et deux pôles, infra et data", "Pôle infra : VPS, Docker, CI/CD. Pôle data et IA : connecteurs, pipelines, IA",
-     "Autonomie : chacun choisit ses tickets dans le backlog de son pôle, livrés par PR relue"],
-    ["Youcef · 45 s", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
+     "Charge estimée sur 106 tickets : data 77, infra 11, pilotage 18 ; 18 à 19 par personne en data, 14 pour Yasser", "Autonomie : chacun choisit ses tickets dans le backlog de son pôle, livrés par PR relue"],
+    ["Youcef · 45 s", "Pas de commanditaire externe : projet porté par l'équipe, pensé pour devenir une startup", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
      "Moment le plus risqué : changer d'ERP, reprise des données à la main"],
     ["Youcef · 45 s", "La fiche projet parlait de migration d'ERP : c'est toujours le cas",
      "Une migration = un flux exécuté une seule fois ; le même moteur gère les échanges récurrents",
