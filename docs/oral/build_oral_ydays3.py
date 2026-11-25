@@ -133,7 +133,7 @@ text(s, 0.95, 5.7, 11.4, 0.95,
 s = content_slide("Des logiciels métier qui communiquent mal")
 box(s, 0.6, 1.6, 4.3, 4.9, fill=NAVY)
 text(s, 0.95, 2.1, 3.6, 1.6, "≈ 10", size=96, bold=True, color=CYAN)
-text(s, 0.95, 5.75, 3.6, 0.6, [[("Porteur : l'équipe, projet entrepreneurial", {"bold": True})]], size=13, color=CYAN)
+text(s, 0.95, 5.75, 3.6, 0.6, [[("Commanditaire : FORTIL Infogérance", {"bold": True})]], size=13, color=CYAN)
 text(s, 0.95, 3.85, 3.6, 1.8, ["logiciels métier dans une PME de 50 à 200 personnes",
                                 [("factures, ERP, RH, recrutement, temps, frais, comptabilité", {"size": 14, "color": "C9D3EA"})]],
      size=20, color=WHITE, bold=True, spacing=12)
@@ -225,6 +225,26 @@ box(s, 0.6, 5.85, 12.1, 0.75, fill=NAVY)
 text(s, 0.6, 5.85, 12.1, 0.75, "Un vrai produit data et IA, pensé pour pouvoir devenir une startup",
      size=19, bold=True, color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 
+# 5 ter. Commanditaire et business -------------------------------------------
+s = content_slide("Commanditaire : FORTIL Infogérance")
+box(s, 0.6, 1.55, 12.1, 1.45, fill=NAVY)
+text(s, 0.95, 1.55, 11.4, 1.45,
+     [[("Le besoin", {"bold": True, "color": CYAN, "size": 15})],
+      [("Relier et migrer les données des logiciels métier de ses clients, sans ressaisie ni scripts fragiles.",
+        {"color": WHITE, "size": 19, "bold": True})]], anchor=MSO_ANCHOR.MIDDLE, spacing=4)
+stages = [("Fin du M1", "Pilote FORTIL", "DataLift traite des extraits anonymisés fournis par FORTIL, comme un vrai cas client.", INDIGO),
+          ("M2", "Données réelles", "Test sur les données de FORTIL, sous convention de traitement des données.", BLUE),
+          ("Ensuite", "Une offre PME", "Abonnement par flux, proposé aux PME par des infogérants comme FORTIL.", CYAN)]
+for i, (when, h, d, c) in enumerate(stages):
+    x = 0.6 + i * 4.1
+    box(s, x, 3.35, 3.8, 3.15, fill=TINT)
+    badge(s, x + 0.3, 3.6, str(i + 1), fill=c)
+    text(s, x + 1.1, 3.6, 2.5, 0.62, [[(when, {"bold": True, "size": 14, "color": c})], [(h, {"bold": True, "size": 19})]],
+         spacing=0)
+    text(s, x + 0.3, 4.55, 3.2, 1.8, d, size=15, color=INK2)
+    if i < 2:
+        arrow(s, x + 3.82, 4.75, w=0.26)
+
 # 6. Veille ------------------------------------------------------------------
 s = content_slide("Veille de l'existant et notre angle")
 text(s, 0.6, 1.5, 5.6, 0.4, "Ce qui existe", size=18, bold=True, color=INK2)
@@ -266,7 +286,7 @@ for i, c in enumerate(ctrl):
     box(s, x, 4.6, 2.1, 0.8, fill=INDIGO)
     text(s, x, 4.6, 2.1, 0.8, c, size=17, bold=True, color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 text(s, 0.6, 5.75, 12.1, 0.9,
-     [[("Stack : ", {"bold": True}), ("Python 3.12, FastAPI, PostgreSQL, Microsoft Fabric (repli DuckDB), LLM via OpenRouter, Docker sur VPS Hetzner, GitHub Actions", {"color": INK2})]],
+     [[("Stack : ", {"bold": True}), ("Python 3.12, Pydantic, FastAPI, PostgreSQL, LLM via OpenRouter, Docker sur VPS Hetzner, Terraform, GitHub Actions", {"color": INK2})]],
      size=15)
 
 # 8. Données synthétiques ---------------------------------------------------
@@ -317,7 +337,7 @@ for i, (k, d) in enumerate(stats):
 # 12. Limites du projet ------------------------------------------------------
 s = content_slide("Les limites du projet, assumées")
 text(s, 0.6, 1.5, 7, 0.4, "Hors périmètre du M1", size=18, bold=True, color=INK2)
-limits = [("Aucune donnée réelle", "Données synthétiques et API simulées depuis les specs officielles. Pas de client en production."),
+limits = [("Aucune donnée personnelle", "Données synthétiques, puis extraits anonymisés de FORTIL pour le pilote. Pas de client en production."),
           ("3 flux exécutés, pas 8", "Les autres plateformes restent au catalogue : correspondances proposées, pas exécutées."),
           ("L'IA ne décide jamais seule", "Modèles généralistes au M1 ; un modèle spécialisé n'arrive qu'au M2."),
           ("Pas de paie, pas de multi-entreprise", "Hors cible du M1 : trop sensibles ou trop larges pour 8 journées.")]
@@ -361,19 +381,22 @@ dark_slide([[("Merci. Vos questions ?", {"bold": True, "color": WHITE, "size": 2
 
 # Notes de présentation : puces courtes, une liste par slide ------------------
 NOTES = [
-    ["Youcef · 15 s", "Bonjour, équipe DataLift", "Plan : équipe, problème, solution, périmètre, architecture, IA, organisation, limites, risques"],
+    ["Youcef · 15 s", "Bonjour, équipe DataLift", "Plan : équipe, problème, solution, périmètre, commanditaire, architecture, IA, organisation, limites, risques"],
     ["Youcef · 30 s", "6 personnes : un pilotage et deux pôles, infra et data", "Pôle infra : VPS, Docker, CI/CD. Pôle data et IA : connecteurs, pipelines, IA",
      "Charge estimée sur 106 tickets : data 77, infra 11, pilotage 18 ; 18 à 19 par personne en data, 14 pour Yasser", "Autonomie : chacun choisit ses tickets dans le backlog de son pôle, livrés par PR relue"],
-    ["Youcef · 45 s", "Pas de commanditaire externe : projet porté par l'équipe, pensé pour devenir une startup", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
+    ["Youcef · 40 s", "Commanditaire : FORTIL Infogérance, qui a ce problème chez ses clients", "PME de 50 à 200 personnes : une dizaine de logiciels", "Ressaisies, exports Excel, scripts fragiles",
      "Moment le plus risqué : changer d'ERP, reprise des données à la main"],
-    ["Youcef · 45 s", "La fiche projet parlait de migration d'ERP : c'est toujours le cas",
+    ["Youcef · 35 s", "La fiche projet parlait de migration d'ERP : c'est toujours le cas",
      "Une migration = un flux exécuté une seule fois ; le même moteur gère les échanges récurrents",
      "Livrables annoncés conservés : qualité, mapping IA, réconciliation, tableau de bord"],
-    ["Youcef · 45 s", "5 étapes : connecter, réunir, demander, valider, exécuter", "L'IA propose avec un score et une explication",
+    ["Youcef · 40 s", "5 étapes : connecter, réunir, demander, valider, exécuter", "L'IA propose avec un score et une explication",
      "Rien ne s'exécute sans validation humaine (cohérent avec l'AI Act)"],
     ["Youcef · 45 s", "8 plateformes au catalogue : l'IA propose des correspondances entre toutes",
      "3 flux exécutés de bout en bout, tous vers IFS", "Flux 1 et 2 indispensables, flux 3 après le flux 2"],
     ["Youcef · 30 s", "M1 : prouver sur 3 flux de bout en bout", "M2 : plus de flux, IA spécialisée, analytique, assistant IA"],
+    ["Youcef · 45 s", "Commanditaire : FORTIL Infogérance",
+     "Fin du M1 : pilote sur des extraits anonymisés par FORTIL, aucune donnée personnelle chez nous (ADR-011)",
+     "M2 : test sur leurs données réelles, sous convention", "Ensuite : une offre pour les PME, portée par des infogérants"],
     ["Youcef · 30 s", "L'existant est riche, on ne le nie pas", "Notre angle : PME, logiciels français, humain qui valide, supervision intégrée"],
     ["Ilyes · 45 s", "Plan de données : bronze (brut), silver (modèle commun, origine tracée), gold (vues, réconciliation)",
      "Plan de contrôle : catalogue, IA, validation, orchestration, supervision",
